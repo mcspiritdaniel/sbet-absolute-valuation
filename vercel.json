@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/SBET%20Absolute%20Valuation.dc.html" },
+    { "source": "/print", "destination": "/SBET%20Absolute%20Valuation-print.dc.html" }
+  ]
+}
