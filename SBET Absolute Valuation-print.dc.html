@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<meta name="omelette-print-source" content="v1787615928385796 SBET Absolute Valuation.dc.html">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/tokens/colors.css">
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/tokens/typography.css">
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/tokens/forms.css">
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/styles.css">
+<script src="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { margin: 0; background: var(--bg-white); }
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+* { animation-delay: -99s !important; animation-duration: .001s !important; animation-iteration-count: 1 !important; animation-fill-mode: both !important; animation-play-state: running !important; transition-duration: 0s !important; }
+input[type="number"], input[type="text"] {
+  font-family: var(--font-mono); font-size: 13px; color: var(--navy);
+  background: var(--bg-white); border: 1px solid var(--border-mid);
+  border-radius: 0; padding: 5px 7px; width: 100%;
+  font-variant-numeric: tabular-nums; outline: none;
+}
+input[type="number"]:focus, input[type="text"]:focus { border-color: var(--navy-mid); }
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; }
+a { color: var(--navy-mid); }
+a:hover { color: var(--navy); }
+</style>
+</helmet>
+
+<doc-page margin="0.6in">
+  <div style="zoom: 1.1; font-family: var(--font-sans); color: var(--navy-mid);">
+
+    <header style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 16px; border-bottom: 2px solid var(--navy);">
+      <div style="display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-family: var(--font-mono); font-size: 15px; font-weight: 500; letter-spacing: 0.16em; color: var(--navy);">SBET</span>
+        <span style="width: 1px; height: 15px; background: var(--border-mid);"></span>
+        <span style="font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--navy-light);">Sharplink, Inc. · Absolute Valuation</span>
+        <span style="margin-left: auto; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cat-label);">Otherwhere Capital</span>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light);">{{ printBasis }}</div>
+    </header>
+
+    <div style="padding-top: 26px;">
+      <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cat-label); margin-bottom: 18px;">I · Overview</div>
+      
+      <div style="display: flex; flex-direction: column; gap: 34px;">
+
+        <section style="break-inside: auto; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label);">Where it stands right now</div>
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-label);">USD · per share</div>
+          </div>
+          <p style="margin: 0 0 4px; max-width: 940px; font-size: 15px; line-height: 1.55; color: var(--navy); text-wrap: pretty;">{{ framingLine }}</p>
+
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--border-mid); border-bottom: 1px solid var(--border);">
+            <div style="padding: 15px 18px 17px; display: flex; flex-direction: column; gap: 7px;">
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light);">NAV per share · economic</div>
+              <div style="font-family: var(--font-serif); font-size: 34px; line-height: 1; letter-spacing: -0.025em; color: var(--navy); font-variant-numeric: tabular-nums;">{{ v.navPerShareEconomic }}</div>
+              <div style="font-family: var(--font-mono); font-size: 10px; line-height: 1.5; color: var(--navy-light); font-variant-numeric: tabular-nums;">basic {{ v.navPerShareBasic }} · company diluted {{ v.navPerShareCompany }}</div>
+              <div style="font-size: 10px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty; min-height: 96px;">{{ v.navTrap }}</div>
+            </div>
+            <div style="padding: 15px 18px 17px; border-left: 1px solid var(--border); display: flex; flex-direction: column; gap: 7px;">
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light);">ETH value per share · basic-equivalent</div>
+              <div style="font-family: var(--font-serif); font-size: 34px; line-height: 1; letter-spacing: -0.025em; color: var(--navy); font-variant-numeric: tabular-nums;">{{ v.ethNavPerShareBasic }}</div>
+              <div style="font-size: 10px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty; min-height: 96px;">{{ v.ethPerShareBasis }}</div>
+              <div style="font-family: var(--font-mono); font-size: 10px; line-height: 1.5; color: var(--navy); font-variant-numeric: tabular-nums; border-left: 2px solid var(--gold); padding-left: 7px;">NAV per share {{ v.navPerShareEconomic }} — never read one without the other</div>
+            </div>
+            <div style="padding: 15px 18px 17px; border-left: 1px solid var(--border); display: flex; flex-direction: column; gap: 7px;">
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light);">Economic mNAV</div>
+              <div style="font-family: var(--font-serif); font-size: 34px; line-height: 1; letter-spacing: -0.025em; color: var(--navy); font-variant-numeric: tabular-nums;">{{ v.mnavEconomic }}</div>
+              <div style="font-family: var(--font-mono); font-size: 10px; line-height: 1.5; color: var(--navy-light); font-variant-numeric: tabular-nums;">basic {{ v.mnavBasic }} · company FD {{ v.mnavCompany }}</div>
+              <div style="font-size: 10px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty; min-height: 96px;">{{ v.mnavTrap }}</div>
+            </div>
+            <div style="padding: 15px 18px 17px; border-left: 1px solid var(--border); background: var(--bg-subtle); display: flex; flex-direction: column; gap: 7px;">
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light);">The line in the sand</div>
+              <div style="font-family: var(--font-serif); font-size: 34px; line-height: 1; letter-spacing: -0.025em; color: var(--navy); font-variant-numeric: tabular-nums;">{{ v.lineInSand }}</div>
+              <div style="font-family: var(--font-mono); font-size: 10px; line-height: 1.5; color: var(--navy-light); font-variant-numeric: tabular-nums;">assets {{ v.navPerShareEconomic }} + net yield {{ v.yieldPerShare }}</div>
+              <div style="font-size: 10px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty; min-height: 96px;">{{ v.lineTrap }}</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--border);">
+            <div style="padding: 11px 18px 13px; display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cat-label);">ETH per 1,000 shares · economic</div>
+              <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 500; color: var(--navy); font-variant-numeric: tabular-nums;">{{ v.ethConcEconomic }}</div>
+            </div>
+            <div style="padding: 11px 18px 13px; border-left: 1px solid var(--border); display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cat-label);">ETH per 1,000 shares · basic-equivalent</div>
+              <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 500; color: var(--navy); font-variant-numeric: tabular-nums;">{{ v.ethConcBasic }}</div>
+              <div style="font-size: 10px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">About 9% higher than the company basis on the same holdings, so never a like-for-like read against a published figure. Quoted against the 2.00 launch figure it implies growth above 100%, which is a denominator artefact rather than strategy.</div>
+            </div>
+            <div style="padding: 11px 18px 13px; border-left: 2px solid var(--gold); display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cat-label);">Assumed diluted · company basis</div>
+              <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 500; color: var(--navy); font-variant-numeric: tabular-nums;">{{ v.ethConcCompany }}</div>
+              <div style="font-family: var(--font-mono); font-size: 9px; line-height: 1.5; color: var(--navy-light); font-variant-numeric: tabular-nums;">Since launch 2.00 · {{ v.concVsLaunch }} · vs Jan-2026 peak 4.03 · {{ v.concVsPeak }}</div>
+              <div style="font-size: 10px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">Comparable to the company’s filings: the deck’s 4.03 at 27 January 2026, the weekly 8-K series of 3.66 / 3.59 / 3.87 / 3.80 / 3.94 / 4.00 through 2025, and the quarterly releases, which define the metric on this basis. The live dashboard’s {{ l.dashConc }} is on basic-equivalent shares and is comparable to that column instead. The 3.66 to 3.59 step in August 2025 is the company’s own caveat in action: it warns the metric “may experience temporary declines due to timing gaps between share issuance and ETH deployment,” and the $200m raise settled before the ETH was bought.</div>
+            </div>
+            <div style="padding: 11px 18px 13px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cat-label);">Discount to NAV per share</div>
+              <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 500; color: var(--navy); font-variant-numeric: tabular-nums;">{{ v.discountToNav }}</div>
+            </div>
+            <div style="padding: 11px 18px 13px; border-top: 1px solid var(--border); border-left: 1px solid var(--border); display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cat-label);">Discount to the line</div>
+              <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 500; color: var(--navy); font-variant-numeric: tabular-nums;">{{ v.discountToLine }}</div>
+            </div>
+          </div>
+        </section>
+
+        <section style="break-inside: auto; display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label);">Where the price sits</div>
+          <div style="position: relative; height: 92px; border-bottom: 1px solid var(--border);">
+            <div style="position: absolute; top: 52px; left: 0; right: 0; height: 1px; background: var(--border-mid);"></div>
+            <div style="position: absolute; top: 52px; left: 0; height: 3px; background: var(--gold); width: {{ bar.priceLeft }};"></div>
+            <div style="position: absolute; top: 36px; height: 17px; width: 1px; background: var(--navy); left: {{ bar.priceLeft }};"></div>
+            <div style="position: absolute; top: 6px; transform: translateX(-50%); text-align: center; white-space: nowrap; left: {{ bar.priceLeft }};">
+              <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 500; color: var(--navy); font-variant-numeric: tabular-nums;">{{ v.sbetPrice }}</div>
+              <div style="font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light);">Market price</div>
+            </div>
+            <div style="position: absolute; top: 53px; height: 16px; width: 1px; background: var(--navy-light); left: {{ bar.navLeft }};"></div>
+            <div style="position: absolute; top: 70px; transform: translateX(-50%); white-space: nowrap; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.06em; color: var(--navy-mid); font-variant-numeric: tabular-nums; left: {{ bar.navLeft }};">NAV/sh {{ v.navPerShareEconomic }}</div>
+            <div style="position: absolute; top: 36px; height: 17px; width: 1px; background: var(--gold); left: {{ bar.lineLeft }};"></div>
+            <div style="position: absolute; top: 6px; transform: translateX(-50%); text-align: center; white-space: nowrap; left: {{ bar.lineLeft }};">
+              <div style="font-family: var(--font-mono); font-size: 15px; font-weight: 500; color: var(--navy); font-variant-numeric: tabular-nums;">{{ v.lineInSand }}</div>
+              <div style="font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light);">The line</div>
+            </div>
+          </div>
+          <p style="margin: 0; max-width: 760px; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">{{ barSentence }}</p>
+        </section>
+
+        
+
+        <section style="display: grid; grid-template-columns: 1fr; gap: 26px;">
+          <div style="display: flex; flex-direction: column;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label); padding-bottom: 8px; border-bottom: 1px solid var(--border-mid); margin-bottom: 4px;">Net asset value · $m</div>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="{{ l.ethHoldings }}" value="{{ v.ethValueM }}" hint-size="100%,26px"></x-import>
+            <div style="padding: 2px 0 8px; font-family: var(--font-mono); font-size: 10px; line-height: 1.6; color: var(--navy-light); font-variant-numeric: tabular-nums;">{{ v.ethSplit }}</div>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Cash" value="{{ v.cashM }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Other assets" value="{{ v.otherM }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Liabilities" value="{{ v.liabM }}" variant="negative" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="NAV · reported basis" value="{{ v.navTotalM }}" variant="total" hint-size="100%,28px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Black-Scholes value of out-of-the-money warrants" value="{{ v.bsDeductM }}" variant="negative" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Economic NAV" value="{{ v.navEconomicM }}" variant="total" hint-size="100%,28px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Economic NAV per share" value="{{ v.navPerShareEconomic }}" variant="highlight" hint-size="100%,38px"></x-import>
+            <p style="margin: 14px 0 0; font-size: 11px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">The deduction is real value that belongs to the warrant holder rather than to you. {{ l.warrantSplit }}</p>
+            <p style="margin: 10px 0 0; font-size: 11px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">{{ v.lstBasis }} {{ v.lstGaap }} The carrying figure is a quarterly balance-sheet number and is fixed at that date; the spot figure moves with the inputs above.{{ v.ethSplitCaveat }}</p>
+          </div>
+
+          <div style="display: flex; flex-direction: column;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label); padding-bottom: 8px; border-bottom: 1px solid var(--border-mid); margin-bottom: 4px;">Share count · three conventions</div>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Common shares outstanding" value="{{ v.sharesCommon }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Pre-funded warrants" value="{{ v.prefunded }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Basic equivalent" value="{{ v.sharesBasic }}" variant="total" hint-size="100%,28px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Unvested RSUs" value="{{ v.rsu }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="{{ l.tsmRow }}" value="{{ v.netItm }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Economic shares · treasury stock method" value="{{ v.sharesEconomic }}" variant="total" hint-size="100%,28px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Company fully diluted · every warrant, no proceeds" value="{{ v.sharesCompany }}" variant="muted" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Full dilution with proceeds · scenario basis" value="{{ v.sharesScenario }}" variant="muted" hint-size="100%,26px"></x-import>
+            <p style="margin: 14px 0 0; font-size: 11px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">Two conventions, two jobs. Treasury stock method for the point-in-time question above; full dilution with its exercise proceeds for scenarios that run the share price somewhere else. They sit about 0.2% apart on NAV.</p>
+          </div>
+        </section>
+
+        <section style="display: grid; grid-template-columns: 1fr; gap: 26px;">
+          <div style="display: flex; flex-direction: column;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label); padding-bottom: 8px; border-bottom: 1px solid var(--border-mid); margin-bottom: 4px;">The line in the sand · per share</div>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Assets that already exist · economic NAV per share" value="{{ v.navPerShareEconomic }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="{{ l.yieldRow }}" value="{{ v.yieldPerShare }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="The line" value="{{ v.lineInSand }}" variant="highlight" hint-size="100%,38px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Market price" value="{{ v.sbetPrice }}" variant="muted" hint-size="100%,26px"></x-import>
+            <p style="margin: 14px 0 0; font-size: 11px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">The discount rate and horizon are inputs, not facts. The line also excludes the ATM option, ecosystem optionality and the governance discount, which happen to roughly cancel at these settings — a coincidence of these inputs, not a rule.</p>
+          </div>
+
+          <div style="display: flex; flex-direction: column;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label); padding-bottom: 8px; border-bottom: 1px solid var(--border-mid); margin-bottom: 4px;">Net yield, year one · $m</div>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="{{ l.nativeYield }}" value="{{ v.nativeYieldM }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="{{ l.liquidYield }}" value="{{ v.liquidYieldM }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Protocol incentives, year one" value="{{ v.incentivesM }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Galaxy fund return" value="{{ v.galaxyM }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Affiliate income" value="{{ v.affiliateM }}" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="SG&amp;A required to run a public company" value="{{ v.sgaM }}" variant="negative" hint-size="100%,26px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Net yield, annual" value="{{ v.netYieldM }}" variant="total" hint-size="100%,28px"></x-import>
+            <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="{{ l.pvRow }}" value="{{ v.yieldPVM }}" variant="total" hint-size="100%,28px"></x-import>
+            <p style="margin: 14px 0 0; font-size: 11px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">That SG&amp;A line is the whole argument about the north star. It reduces NAV per share every year and moves ETH per 1,000 shares by exactly zero.</p>
+          </div>
+        </section>
+
+      </div>
+      
+    </div>
+
+
+      <div style="break-before: page; padding-top: 4px; margin-bottom: 22px; border-bottom: 1px solid var(--border-mid); padding-bottom: 10px; display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+        <div style="font-family: var(--font-serif); font-size: 22px; letter-spacing: -0.015em; color: var(--navy);">The argument</div>
+        <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cat-label);">II · Value creation and justification</div>
+      </div>
+    <div>
+        <div style="display: flex; flex-direction: column; gap: 34px;">
+
+        <section style="break-inside: auto; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label);">Does the machine create value</div>
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-label);">Marginal action · $50m</div>
+          </div>
+          <p style="margin: 0; max-width: 900px; font-size: 15px; line-height: 1.55; color: var(--navy); text-wrap: pretty;">Two tests sit below. The first asks what a buyback does at each price. The second asks what happens when the company simply pays its bills. Read the two columns together in both — where they disagree, the north star is the one that is wrong.</p>
+
+          <div style="border: 1px solid var(--border); margin-top: 4px;">
+            <div style="display: grid; grid-template-columns: 1.1fr 1fr 1fr 1.2fr; background: var(--bg-subtle); border-bottom: 1px solid var(--border);">
+              <div style="padding: 9px 14px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light);">Repurchase price</div>
+              <div style="padding: 9px 14px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light); text-align: right;">NAV per share</div>
+              <div style="padding: 9px 14px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light); text-align: right;">ETH per 1,000 sh</div>
+              <div style="padding: 9px 14px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light); text-align: right;">Against buying ETH</div>
+            </div>
+            <sc-for list="{{ buybacks }}" as="row" hint-placeholder-count="7">
+              <div style="display: grid; grid-template-columns: 1.1fr 1fr 1fr 1.2fr; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums;">
+                <div style="padding: 8px 14px; color: var(--navy);">{{ row.price }}</div>
+                <div style="padding: 8px 14px; text-align: right; color: {{ row.navGood }};">{{ row.navDelta }}</div>
+                <div style="padding: 8px 14px; text-align: right; color: var(--navy-light);">{{ row.concDelta }}</div>
+                <div style="padding: 8px 14px; text-align: right; font-size: 11px; color: {{ row.good }};">{{ row.verdict }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin: 4px 0 0; max-width: 900px; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">The middle column never turns negative. Every row, at every price, ETH per 1,000 shares rises — because cash appears nowhere in that formula, so spending it cannot register. The left column is the one that tells you whether the transaction was any good, and it changes sign. The benchmark in the right-hand column is not "do nothing", it is "buy ETH instead", which is why the breakeven sits at ETH NAV per share {{ v.ethNavPerShareBasic }} rather than at zero.</p>
+
+          <div style="border: 1px solid var(--border); margin-top: 18px;">
+            <div style="display: grid; grid-template-columns: 1.6fr 1fr 1fr; background: var(--bg-subtle); border-bottom: 1px solid var(--border);">
+              <div style="padding: 9px 14px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light);">{{ l.opexHead }}</div>
+              <div style="padding: 9px 14px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light); text-align: right;">NAV per share</div>
+              <div style="padding: 9px 14px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light); text-align: right;">ETH per 1,000 sh</div>
+            </div>
+            <sc-for list="{{ opex }}" as="row" hint-placeholder-count="2">
+              <div style="display: grid; grid-template-columns: 1.6fr 1fr 1fr; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums;">
+                <div style="padding: 8px 14px; color: var(--navy);">{{ row.label }}</div>
+                <div style="padding: 8px 14px; text-align: right; color: var(--neg);">{{ row.nav }}</div>
+                <div style="padding: 8px 14px; text-align: right; color: {{ row.concColor }};">{{ row.conc }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="border-left: 2px solid var(--gold); padding: 2px 0 2px 12px; max-width: 900px; display: flex; flex-direction: column; gap: 5px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light);">Read both columns · the 0.00% is the point</div>
+            <p style="margin: 0; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">Identical economics, different pocket, opposite reported result. Funded from cash, the burn cuts NAV per share and moves the north star by exactly 0.00% — read alone, that row says the money was free. Funded by selling {{ v.ethSold }}, the same spend finally shows up. A metric whose direction depends on which account you pay from cannot tell you whether the spending was worth it, and the entire operating burn is invisible to it.</p>
+          </div>
+        </section>
+
+        <section style="break-inside: auto; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label);">What the price does as ETH moves</div>
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-label);">Chart 2 · per share</div>
+          </div>
+          <div style="border: 1px solid var(--border); position: relative;">
+            <svg viewBox="0 0 760 300" style="display: block; width: 100%; height: auto;">
+              <sc-for list="{{ ch2.yTicks }}" as="t" hint-placeholder-count="5">
+                <line x1="52" x2="746" y1="{{ t.pos }}" y2="{{ t.pos }}" stroke="var(--border)" stroke-width="1"></line>
+              </sc-for>
+              <line x1="{{ ch2.today.x }}" x2="{{ ch2.today.x }}" y1="16" y2="270" stroke="var(--navy-light)" stroke-width="1" stroke-dasharray="2 3"></line>
+              <path d="{{ ch2.paths.line }}" fill="none" stroke="var(--gold)" stroke-width="2"></path>
+              <path d="{{ ch2.paths.nav }}" fill="none" stroke="var(--navy-light)" stroke-width="1.25" stroke-dasharray="4 3"></path>
+              <path d="{{ ch2.paths.just }}" fill="none" stroke="var(--navy-mid)" stroke-width="1.5"></path>
+              <path d="{{ ch2.paths.obs }}" fill="none" stroke="var(--navy)" stroke-width="2"></path>
+            </svg>
+            <sc-for list="{{ ch2.yTicks }}" as="t" hint-placeholder-count="5">
+              <div style="position: absolute; left: 0; width: 6%; text-align: right; transform: translateY(-50%); font-family: var(--font-mono); font-size: 9px; color: var(--navy-light); font-variant-numeric: tabular-nums; top: {{ t.top }};">{{ t.label }}</div>
+            </sc-for>
+            <sc-for list="{{ ch2.xTicks }}" as="t" hint-placeholder-count="2">
+              <div style="position: absolute; bottom: 1.5%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 9px; color: var(--navy-light); font-variant-numeric: tabular-nums; left: {{ t.left }};">{{ t.label }}</div>
+            </sc-for>
+            <div style="position: absolute; top: 0.5%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 9px; color: var(--navy-light); font-variant-numeric: tabular-nums; white-space: nowrap; left: {{ ch2.today.left }};">{{ ch2.today.label }}</div>
+          </div>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy-light);">
+            <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 2px; background: var(--navy);"></span>At the observed multiple {{ v.regimeObserved }}</span>
+            <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 2px; background: var(--navy-mid);"></span>At justified {{ v.justifiedScenario }} · full dilution</span>
+            <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 2px; background: var(--gold);"></span>The line · assets plus yield</span>
+            <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 2px; background: var(--navy-light);"></span>NAV per share · parity</span>
+          </div>
+          <p style="margin: 0; max-width: 900px; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">{{ ch2.caption }}</p>
+        </section>
+
+        <section style="break-inside: auto; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label);">Price per share at each ETH level and multiple</div>
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-label);">Deliberately unlabelled</div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 10px; line-height: 1.5; color: var(--navy-mid); border-left: 2px solid var(--border-mid); padding-left: 10px;">{{ v.basisNote }}</div>
+          <div style="border: 1px solid var(--border);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1.1fr; background: var(--bg-subtle); border-bottom: 1px solid var(--border);">
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light);">ETH price</div>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">NAV per sh</div>
+              <sc-for list="{{ grid.heads }}" as="h" hint-placeholder-count="4">
+                <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">at {{ h.label }}<br><span style="color: var(--cat-label);">{{ h.sub }}</span></div>
+              </sc-for>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">The line<br><span style="color: var(--cat-label);">full-dilution basis</span></div>
+            </div>
+            <sc-for list="{{ grid.rows }}" as="row" hint-placeholder-count="6">
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1.1fr; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums; background: {{ row.bg }};">
+                <div style="padding: 8px 12px; color: var(--navy);">{{ row.eth }}</div>
+                <div style="padding: 8px 12px; text-align: right; color: var(--navy-light);">{{ row.nav }}</div>
+                <sc-for list="{{ row.cells }}" as="c" hint-placeholder-count="4">
+                  <div style="padding: 8px 12px; text-align: right; color: var(--navy);">{{ c.v }}</div>
+                </sc-for>
+                <div style="padding: 8px 12px; text-align: right; color: var(--gold);">{{ row.line }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="border-left: 2px solid var(--gold); padding: 2px 0 2px 12px; max-width: 900px; display: flex; flex-direction: column; gap: 5px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light);">Why these columns differ from the figures elsewhere in the app</div>
+            <p style="margin: 0; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">{{ v.justifiedReconcile }}</p>
+            <p style="margin: 0; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">{{ v.lineReconcile }}</p>
+          </div>
+          <p style="margin: 0; max-width: 900px; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">No case here is called bear, base or bull. Naming them would tell you which one to believe, and the model has no basis for that claim — each column is a multiple you might assume, each row an ETH price you might assume, and the pairing is yours to make. The shaded row is where ETH trades today.</p>
+        </section>
+
+        <section style="display: grid; grid-template-columns: 1fr; gap: 26px; align-items: start;">
+        <div style="display: flex; flex-direction: column;">
+          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label); padding-bottom: 8px;">Justified mNAV · reconciliation trace</div>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="{{ l.netYieldTrace }}" value="{{ v.netYieldK }}" hint-size="100%,26px"></x-import>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="{{ l.pvTrace }}" value="{{ v.yieldPVK }}" hint-size="100%,26px"></x-import>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Denominator · economic NAV, after the warrant deduction" value="{{ v.navEconomicK }}" hint-size="100%,26px"></x-import>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Yield term · PV ÷ economic NAV" value="{{ v.yieldOnNav }}" variant="total" hint-size="100%,28px"></x-import>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="ATM option · manual judgement input" value="{{ v.atmOption }}" hint-size="100%,26px"></x-import>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Ecosystem optionality" value="{{ v.ecoOption }}" hint-size="100%,26px"></x-import>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Governance discount" value="{{ v.govDiscount }}" variant="negative" hint-size="100%,26px"></x-import>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Yield-only line · before optionality" value="{{ v.justifiedYieldOnly }}" variant="muted" hint-size="100%,26px"></x-import>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Justified mNAV" value="{{ v.justified }}" variant="highlight" hint-size="100%,38px"></x-import>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Implied price · × economic NAV per share" value="{{ v.impliedJust }}" variant="total" hint-size="100%,28px"></x-import>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="{{ l.scenarioTwin }}" value="{{ v.priceJustifiedScenario }}" variant="muted" hint-size="100%,26px"></x-import>
+          <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Observed economic mNAV · same construction on both sides" value="{{ v.mnavEconomic }}" variant="muted" hint-size="100%,26px"></x-import>
+
+          <div style="border: 1px solid var(--border); margin-top: 16px; padding: 13px 15px; display: flex; flex-direction: column; gap: 9px;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 14px;">
+              <span style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light);">Coherence check · net optionality identity</span>
+              <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ v.identityColor }};">{{ v.identityOk }}</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr auto; gap: 3px 14px; font-family: var(--font-mono); font-size: 11px; color: var(--navy-mid); font-variant-numeric: tabular-nums;">
+              <span>Justified {{ v.impliedJust4 }} less the line {{ v.lineInSand4 }}</span>
+              <span style="color: var(--navy);">{{ v.identityLhs }}</span>
+              <span>Net optionality {{ v.netOptionality }} × economic NAV per share {{ v.navPerShareEconomic }}</span>
+              <span style="color: var(--navy);">{{ v.identityRhs }}</span>
+            </div>
+            <sc-if value="{{ v.identityBroken }}">
+              <p style="margin: 0; font-size: 11px; line-height: 1.5; color: var(--neg); text-wrap: pretty;">{{ v.identityDiagnosis }}</p>
+            </sc-if>
+            <p style="margin: 0; font-size: 11px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">The two sides agree only when the yield term, the line and the per-share conversion all sit on one basis. It is a live proof that this view has no mixed-basis arithmetic in it — if a future edit reintroduces one, this row breaks before anything else visibly does, and names which basis drifted.</p>
+          </div>
+          <p style="margin: 14px 0 0; font-size: 11px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">This view carries two bases on purpose, and the split is the rule rather than an inconsistency. The trace above is point-in-time work, so it runs on the treasury stock method throughout: the yield term divides by economic NAV, the multiple converts at economic NAV per share, and the comparator is observed economic mNAV. The grid and chart 2 are scenario work, so they run on full dilution with proceeds, which needs no share price to resolve moneyness and therefore cannot go circular when the output is a price. Basic mNAV stays on the Overview as the company-comparable figure.</p>
+        </div>
+        </section>
+
+        <section style="border: 1px solid var(--neg-border); background: var(--neg-bg); padding: 15px 17px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--neg);">Known gap · the capital allocation scorecard is not on this view</div>
+          <p style="margin: 0; max-width: 900px; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">The scorecard covers <strong style="color: var(--navy); font-weight: 600;">3 of 6 deals</strong>: FY2025 buybacks at $16.37 against NAV per share of $11.59, -$9.27m; the June 2026 registered direct, share leg, -$19.85m; June 2026 buybacks at a 29% discount, +$4.13m; partial total -$24.98m. The three 2025 raises are blank by decision, not oversight — NAV per share at those dates is not derivable from disclosure. August 2025 at $21.76 was clearly accretive; October 2025 at $17.00 was roughly a wash; the completed record reads three wins, two losses and one wash. It is left off the view rather than shown with a caveat, because a headline figure carrying a footnote gets read as a headline. It stays out until all six rows are measured.</p>
+        </section>
+
+        </div>
+      </div>
+
+
+      <div style="break-before: page; padding-top: 4px; margin-bottom: 22px; border-bottom: 1px solid var(--border-mid); padding-bottom: 10px; display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+        <div style="font-family: var(--font-serif); font-size: 22px; letter-spacing: -0.015em; color: var(--navy);">Capital structure</div>
+        <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cat-label);">III · Warrants, share counts, dilution</div>
+      </div>
+    <div>
+        <div style="display: flex; flex-direction: column; gap: 34px;">
+
+        <section style="break-inside: auto; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label);">The warrant stack</div>
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-label);">At {{ v.sbetPrice }} · vol {{ v.volPct }}</div>
+          </div>
+          <p style="margin: 0; max-width: 900px; font-size: 15px; line-height: 1.55; color: var(--navy); text-wrap: pretty;">Every tranche is handled twice, depending on where it sits. In the money, its shares enter the count and its exercise proceeds retire stock at market. Out of the money, no shares enter, but its Black-Scholes value is deducted from NAV — because an option that is out of the money today is not worth zero.</p>
+          <div style="border: 1px solid var(--border);">
+            <div style="display: grid; grid-template-columns: 1fr 0.8fr 0.7fr 1fr 0.8fr 1fr 1fr; background: var(--bg-subtle); border-bottom: 1px solid var(--border);">
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light);">Warrant shares</div>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">Strike</div>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">Term</div>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light);">State</div>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">BS value</div>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">NAV deduction</div>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">Net shares added</div>
+            </div>
+            <sc-for list="{{ tranches }}" as="t" hint-placeholder-count="7">
+              <div style="display: grid; grid-template-columns: 1fr 0.8fr 0.7fr 1fr 0.8fr 1fr 1fr; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums;">
+                <div style="padding: 8px 12px; color: var(--navy);">{{ t.n }}</div>
+                <div style="padding: 8px 12px; text-align: right; color: var(--navy);">{{ t.k }}</div>
+                <div style="padding: 8px 12px; text-align: right; color: var(--navy-light);">{{ t.t }}</div>
+                <div style="padding: 8px 12px; font-size: 11px; color: {{ t.stateColor }};">{{ t.state }}</div>
+                <div style="padding: 8px 12px; text-align: right; color: var(--navy-light);">{{ t.bs }}</div>
+                <div style="padding: 8px 12px; text-align: right; color: var(--neg);">{{ t.deduct }}</div>
+                <div style="padding: 8px 12px; text-align: right; color: var(--navy);">{{ t.net }}</div>
+              </div>
+            </sc-for>
+            <div style="display: grid; grid-template-columns: 1fr 0.8fr 0.7fr 1fr 0.8fr 1fr 1fr; background: var(--bg-subtle); font-family: var(--font-mono); font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums;">
+              <div style="padding: 9px 12px; color: var(--navy);">{{ v.warrantsTotal }}</div>
+              <div style="padding: 9px 12px;"></div>
+              <div style="padding: 9px 12px;"></div>
+              <div style="padding: 9px 12px; font-size: 11px; color: var(--navy-light);">{{ l.itmSummary }}</div>
+              <div style="padding: 9px 12px;"></div>
+              <div style="padding: 9px 12px; text-align: right; color: var(--neg);">{{ v.bsDeductM }}</div>
+              <div style="padding: 9px 12px; text-align: right; color: var(--navy);">{{ v.netItm }}</div>
+            </div>
+          </div>
+          <p style="margin: 0; max-width: 900px; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">Separately, {{ v.prefunded }} pre-funded warrants carry a {{ v.prefundedStrike }} and are counted in the basic share count rather than here — at that strike they are shares in all but name. The {{ v.optionCount }} employee options struck at {{ v.optionStrike }} are the clearest case against the company's method: they will never be exercised, and counting them as real shares is fiction.</p>
+        </section>
+
+        <section style="break-inside: auto; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label);">What each convention does to the same NAV</div>
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-label);">Dilution waterfall</div>
+          </div>
+          <div style="border: 1px solid var(--border);">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; background: var(--bg-subtle); border-bottom: 1px solid var(--border);">
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light);">Convention</div>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">Shares</div>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">NAV used</div>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">NAV per share</div>
+              <div style="padding: 9px 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light); text-align: right;">mNAV</div>
+            </div>
+            <sc-for list="{{ waterfall }}" as="r" hint-placeholder-count="3">
+              <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums; background: {{ r.bg }};">
+                <div style="padding: 9px 12px; color: var(--navy);">{{ r.label }}</div>
+                <div style="padding: 9px 12px; text-align: right; color: var(--navy-light);">{{ r.shares }}</div>
+                <div style="padding: 9px 12px; text-align: right; color: var(--navy-light);">{{ r.nav }}</div>
+                <div style="padding: 9px 12px; text-align: right; color: var(--navy);">{{ r.navPS }}</div>
+                <div style="padding: 9px 12px; text-align: right; color: var(--navy);">{{ r.mnav }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin: 0; max-width: 900px; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">The company's method overstates the share count and understates NAV at the same time. Both errors push the multiple up, so at a discount its own figure makes the stock look less cheap than it is. Basic makes the opposite error and flatters it. The middle row is the one this app uses.</p>
+        </section>
+
+        <section style="break-inside: auto; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label);">The three definitions compared</div>
+            
+          </div>
+          <div style="border: 1px solid var(--border); position: relative;">
+            <svg viewBox="0 0 760 300" style="display: block; width: 100%; height: auto;">
+              <sc-for list="{{ ch1.yTicks }}" as="t" hint-placeholder-count="6">
+                <line x1="52" x2="746" y1="{{ t.pos }}" y2="{{ t.pos }}" stroke="var(--border)" stroke-width="1"></line>
+              </sc-for>
+              <sc-if value="{{ showBand }}">
+                <g>
+                  <line x1="52" x2="60" y1="{{ ch1.band.y }}" y2="{{ ch1.band.y }}" stroke="var(--navy-light)" stroke-width="1"></line>
+                  <line x1="52" x2="60" y1="{{ ch1.band.yLo }}" y2="{{ ch1.band.yLo }}" stroke="var(--navy-light)" stroke-width="1"></line>
+                  <line x1="56" x2="56" y1="{{ ch1.band.y }}" y2="{{ ch1.band.yLo }}" stroke="var(--navy-light)" stroke-width="1"></line>
+                  <text x="64" y="{{ ch1.band.labelY }}" fill="var(--navy-light)" style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.06em;">BASIC AND FULLY DILUTED · FLAT BY CONSTRUCTION</text>
+                </g>
+              </sc-if>
+              <line x1="{{ ch1.today.x }}" x2="{{ ch1.today.x }}" y1="16" y2="270" stroke="var(--navy-light)" stroke-width="1" stroke-dasharray="2 3"></line>
+              <path d="{{ ch1.paths.basic }}" fill="none" stroke="var(--navy-light)" stroke-width="1.5"></path>
+              <path d="{{ ch1.paths.fd }}" fill="none" stroke="var(--navy-mid)" stroke-width="1.5" stroke-dasharray="4 3"></path>
+              <path d="{{ ch1.paths.econ }}" fill="none" stroke="var(--bg-white)" stroke-width="5"></path>
+              <path d="{{ ch1.paths.econ }}" fill="none" stroke="var(--gold)" stroke-width="2.25"></path>
+            </svg>
+            <sc-for list="{{ ch1.yTicks }}" as="t" hint-placeholder-count="6">
+              <div style="position: absolute; left: 0; width: 6%; text-align: right; transform: translateY(-50%); font-family: var(--font-mono); font-size: 9px; color: var(--navy-light); font-variant-numeric: tabular-nums; top: {{ t.top }};">{{ t.label }}</div>
+            </sc-for>
+            <sc-for list="{{ ch1.xTicks }}" as="t" hint-placeholder-count="2">
+              <div style="position: absolute; bottom: 1.5%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 9px; color: var(--navy-light); font-variant-numeric: tabular-nums; left: {{ t.left }};">{{ t.label }}</div>
+            </sc-for>
+            <div style="position: absolute; top: 0.5%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 9px; color: var(--navy-light); font-variant-numeric: tabular-nums; white-space: nowrap; left: {{ ch1.today.left }};">{{ ch1.today.label }}</div>
+          </div>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy-light);">
+            <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 2px; background: var(--navy-light);"></span>Basic</span>
+            <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 2px; background: var(--navy-mid);"></span>Fully diluted · company method</span>
+            <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 2px; background: var(--gold);"></span>Economic</span>
+            <span style="margin-left: auto; color: var(--cat-label);">{{ ch1.xLabel }}</span>
+          </div>
+          <p style="margin: 0; max-width: 900px; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">{{ ch1.caption }}</p>
+          <sc-if value="{{ showBeta }}">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; max-width: 520px; padding-top: 6px;">
+              <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.SliderControl" label="mNAV beta to ETH" value="{{ inp.mnavBeta }}" min="0" max="1.5" step="0.05" onChange="{{ onBeta }}" hint-size="100%,34px"></x-import>
+              <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.SliderControl" label="Regime floor" value="{{ inp.regimeFloor }}" min="0.2" max="1.2" step="0.05" unit="×" onChange="{{ onFloor }}" hint-size="100%,34px"></x-import>
+            </div>
+          </sc-if>
+        </section>
+
+        <section style="border: 1px solid var(--neg-border); background: var(--neg-bg); padding: 15px 17px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--neg);">Known gap · the seeded SBET price is a proxy</div>
+          <p style="margin: 0; max-width: 900px; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">{{ l.seedNote }} Every mNAV on this view and the moneyness of every tranche above depend on the share price. NAV per share is price-sensitive through the treasury-stock count and the Black-Scholes deduction; ETH per 1,000 shares is not.</p>
+          <p style="margin: 0; max-width: 900px; font-size: 12px; line-height: 1.55; color: var(--navy-mid); text-wrap: pretty;">{{ l.holdingsNote }}</p>
+        </section>
+
+        </div>
+      </div>
+
+
+      <div style="break-before: page; padding-top: 4px; margin-bottom: 22px; border-bottom: 1px solid var(--border-mid); padding-bottom: 10px; display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+        <div style="font-family: var(--font-serif); font-size: 22px; letter-spacing: -0.015em; color: var(--navy);">Methodology</div>
+        <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cat-label);">IV · Why this model measures what it measures</div>
+      </div>
+    <div style="display: flex; flex-direction: column; gap: 22px;"><h1 style="margin: 0; font-family: var(--font-serif); font-size: 26px; line-height: 1.2; color: var(--navy); letter-spacing: -0.015em;">Why this model measures what it measures</h1>
+          <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">Three choices in this model are non-obvious. Each is defended here, including where it is weak.</p>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--border); padding-top: 22px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);">A · Why economic mNAV is the right multiple</div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">All three definitions answer one question: how much am I paying per dollar of NAV? To answer it you must count the claims on that NAV correctly. Basic and fully diluted each get it wrong, in opposite directions.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;"><strong style="color: var(--navy); font-weight: 600;">Basic mNAV ignores dilution entirely.</strong> If a holder owns 10.0m warrants struck at $8.15 and the stock reaches $20, those shares will exist and will claim NAV. Basic pretends they do not, so it flatters the discount.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;"><strong style="color: var(--navy); font-weight: 600;">Fully diluted mNAV (company method) makes two errors that compound.</strong> It counts every warrant and option share regardless of moneyness — the 3,146 options struck at $122.88 will never be exercised, and treating them as real shares is fiction. And it credits zero exercise proceeds: if the $8.15 warrants are exercised the company receives roughly $81.6m of cash that lands in NAV. You cannot add the shares without adding the money. The 10-K and 10-Q state explicitly that Assumed Diluted Shares Outstanding is not calculated using the treasury stock method.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">Overstating the denominator and understating NAV both push the multiple up — so at a discount the company's own fully diluted figure makes the stock look <em>less</em> cheap than it is.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;"><strong style="color: var(--navy); font-weight: 600;">Economic mNAV fixes both, by treating moneyness as a state rather than a fact.</strong> A warrant is a probabilistic claim, so it is handled twice. If it is in the money now, the treasury stock method applies: shares in, exercise proceeds used to retire shares at market, only the net counted. If it might be in the money later, its Black-Scholes value is deducted from NAV, because that option value is real and belongs to the holder rather than to you. Basic captures neither effect; fully diluted double-counts the first and ignores the second.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">The company concedes the gap this closes. Its dashboard disclaimer states that these metrics do &ldquo;not take into account that our assets are subject to all existing and future liabilities.&rdquo; Economic mNAV is the version that does.</p>
+            <div style="border: 1px solid var(--border); padding: 4px 14px 10px; margin-top: 4px;">
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cat-label); padding: 10px 0 4px;">Live comparison at the current share price</div>
+              <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Basic mNAV" value="{{ v.mnavBasic }}" hint-size="100%,26px"></x-import>
+              <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Fully diluted mNAV · company method" value="{{ v.mnavCompany }}" hint-size="100%,26px"></x-import>
+              <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="Economic mNAV · treasury stock method" value="{{ v.mnavEconomic }}" variant="total" hint-size="100%,28px"></x-import>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;"><strong style="color: var(--navy); font-weight: 600;">Where it actually bites.</strong> The divergence is widest at a discount and narrows as the stock rises — the opposite of the intuition. At $5 the company method overstates the honest share count by roughly 7.4%; by $30 that falls to about 1.8%. As the price climbs, exercise proceeds shrink relative to the price, so the treasury stock offset gets smaller and the two methods converge on full dilution. Phantom shares are phantom only while they are out of the money. So the choice of metric matters most right now — precisely when an investor is trying to size a discount.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-light); text-wrap: pretty;"><strong style="color: var(--navy-mid); font-weight: 600;">Its own weakness.</strong> The treasury stock method assumes exercise proceeds are used to repurchase stock at the prevailing price. That is an accounting convention, not a prediction of what management will do. And the Black-Scholes deduction depends on the volatility input, which is an estimate — 100% is used here. Best of the three, not perfect.</p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--border); padding-top: 22px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);">B · The line in the sand — asset value plus net yield</div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">The line is not a price target. It is a decomposition, and it answers one question: what is SBET worth if management never touches the capital markets again? Two components, neither of which requires anything new to happen.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;"><strong style="color: var(--navy); font-weight: 600;">Part 1 — assets that already exist.</strong> Total ETH holdings plus cash, less liabilities, divided by shares. Worth this much whether or not anyone does anything. This is NAV per share.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;"><strong style="color: var(--navy); font-weight: 600;">Part 2 — cash flows the existing base throws off.</strong> Staking, liquid staking and restaking accretion, plus protocol incentives and fund returns, less the SG&amp;A required to run a public company. Discounted over a finite horizon. Hold the ETH, stake it, collect the incentives, pay the bills.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">Everything above that line requires a claim about future capital allocation — specifically, that management will sell equity above NAV and manufacture ETH per share for existing holders. That is the machine. It is real: it took ETH concentration from 2.00 at launch to a peak of 4.03 in January 2026, on the assumed diluted basis the company publishes. It has not held there — concentration is 6.9% below that peak. But it needs mNAV back above 1.0× <em>and</em> a marginal buyer willing to pay the premium. Neither is contractual, neither is within management's control, and both disappeared during 2026.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">So the line tells you what you are underwriting. Below it, you are buying assets plus yield at a discount. Above it, you are additionally paying for management's future ability to sell overpriced stock to somebody else.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-light); text-wrap: pretty;"><strong style="color: var(--navy-mid); font-weight: 600;">Caveats.</strong> The discount rate and horizon are inputs, not facts — at a lower rate in perpetuity the yield component is far larger and the line moves up substantially. The line also excludes the ATM option, ecosystem optionality and the governance discount. On the current inputs those net to {{ v.optionalityClause }}, which puts the justified price of {{ v.impliedJust }} {{ v.justVsLineWord }} the line of {{ v.lineInSand }}.</p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--border); padding-top: 22px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);">C · How the north star can be gamed</div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">ETH concentration is ETH units divided by shares per thousand. Cash appears nowhere in that formula. So a cash-funded buyback leaves the numerator untouched and shrinks the denominator: the metric rises, arithmetically, always — regardless of the price paid.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;"><strong style="color: var(--navy); font-weight: 600;">The fair objection: cash is fungible with ETH, so spending it has an opportunity cost.</strong> Correct. The right benchmark is not "do nothing", it is "buy ETH instead". Measured against that benchmark the breakeven is ETH NAV per share, not zero. Buying back below ETH NAV per share beats buying ETH; above it, buying ETH wins.</p>
+            <div style="border: 1px solid var(--border); padding: 4px 14px 10px;">
+              <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.BridgeRow" label="ETH NAV per share · basic-equivalent · the true buyback breakeven" value="{{ v.ethNavPerShareBasic }}" variant="total" hint-size="100%,30px"></x-import>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;"><strong style="color: var(--navy); font-weight: 600;">But the metric still fails, because it rises at every price.</strong> A repurchase at three times NAV destroys value and the north star still goes up. The direction of the metric carries no information about whether the transaction was good. Only NAV per share does. That is why this model never displays one without the other.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;"><strong style="color: var(--navy); font-weight: 600;">The larger version of the problem is operating expense, not buybacks.</strong> SG&amp;A of roughly $36m a year, funded from cash, reduces NAV per share every year and moves ETH concentration by exactly zero. The same is true of the ecosystem grants. The entire operating burn is invisible to the north star.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;"><strong style="color: var(--navy); font-weight: 600;">The tell:</strong> fund that same $36m by selling ETH and the metric falls. Identical economics, different pocket, opposite reported result. A metric whose direction depends on which account you pay from is, by definition, gameable.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-light); text-wrap: pretty;">In fairness to the company, it does publish basic-equivalent NAV per share on its dashboard, so the antidote is available. The objection is to reading ETH per share alone — which is precisely how it is marketed as the north star.</p>
+          </div>
+
+          <div style="border-top: 1px solid var(--border); padding-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);">D · How the yield strip is capitalized</div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">The strip is not uniform. Protocol incentives decay {{ l.decayPct }} a year, as documented, so they are discounted on their own declining schedule; every other component of net yield is capitalized as a level annuity over the horizon. Present value of the strip is {{ v.yieldPVM }}, giving assets plus yield of {{ v.lineInSand }}.</p>
+          </div>
+
+          <div style="border-top: 1px solid var(--border); padding-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);">E · AI provenance</div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">Built with AI assistance. The workbook is generated by a Python script; Claude was used for construction, source retrieval from SEC filings, and arithmetic checking, and Claude Design built this interface. Every build is validated by an automated regression harness (18 checks) that verifies the workbook against its own source cells and recomputes key results from first principles.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">Analytical judgements are the author's. Valuation conventions, share-count bases, the treatment of protocol incentives, the ATM option value, and the decision to leave unsourceable figures blank rather than estimate them are editorial choices, not model outputs.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">Figures are tied to SEC filings and identified market data. Where a figure could not be sourced it is left blank and the gap is documented rather than filled.</p>
+            <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--navy-mid); text-wrap: pretty;">The AI made errors during construction, including cross-referencing the wrong cells, quoting figures from superseded builds, and asserting a defect in code that was correct. Each was caught by review or by the harness. That is the reason for the harness, and the reason judgement stays with the author.</p>
+          </div></div>
+
+    <div style="margin-top: 34px;"><footer style="border-top: 1px solid var(--border-mid); padding-top: 18px; display: flex; flex-direction: column; gap: 14px;">
+        <sc-if value="{{ showRegression }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; gap: 26px; flex-wrap: wrap; align-items: baseline; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-light);">
+            <span style="color: var(--cat-label);">Port check · {{ reg.basis }}</span>
+            <span>Line in the sand {{ reg.line }}</span>
+            <span>Economic mNAV {{ reg.mnav }}</span>
+            <span>Economic NAV per share {{ reg.navPS }}</span>
+            <span>ETH concentration {{ reg.conc }}</span>
+            <span>Justified · scenario basis {{ reg.justScen }}</span>
+            <span>Justified price · scenario basis {{ reg.priceScen }}</span>
+            <span>Justified price · economic basis {{ reg.priceEco }}</span>
+          </div>
+        </sc-if>
+        <p style="margin: 0; max-width: 900px; font-family: var(--font-sans); font-size: 10px; line-height: 1.6; letter-spacing: 0.02em; color: var(--navy-light); text-wrap: pretty;">An analytical framework built from public SEC filings. Not investment advice. Not affiliated with Sharplink, Inc. Digital asset treasury companies carry concentration, custody, protocol, regulatory and dilution risk. Model defaults are starting values only · all figures USD unless noted.</p>
+      </footer></div>
+
+  </div>
+</doc-page>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;overview&quot;,&quot;value&quot;,&quot;valuation&quot;,&quot;capital&quot;],&quot;default&quot;:&quot;overview&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;notesReactive&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;showRegressionStrip&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behaviour&quot;}}">
+class Component extends DCLogic {
+  static TARGETS = {
+    lineInSand: '11.2139253',
+    mnavEconomic: '0.8325398',
+    navPerShareEconomic: '10.0295503',
+    ethConcBasic: '4.0943806',
+    justifiedScenario: '1.1017062',
+    justifiedOnScenario: '10.9327781',
+    priceJustifiedEconomic: '11.1136298',
+    yieldPV: '262549.7344146'
+  };
+  static ASOF = '2026-08-25';
+  static ASOF_SHORT = '25 Aug';
+  static ASOF_LONG = '25 Aug 2026';
+  static SRC = {
+    holdingsEth: 888938, holdingsRelease: '3 August 2026',
+    dashConc: 4.10, dashEth: 890376, dashAsOf: '23 August', closeDate: '25 August 2026'
+  };
+  static SNAP = {
+    ethNative: 634255, ethLsETH: 181748, ethWeETH: 72935,
+    cash: 56195, otherAssets: 1911, liabilities: 5572,
+    sharesCommon: 217031714, prefundedWarrants: 80000, rsu: 3500417, options: 3146,
+    aprNative: 0.034, aprLsETH: 0.03, aprWeETH: 0.03,
+    incentivesY1: 10344, incentiveDecay: 0.5, galaxyCommit: 100000, galaxyReturn: 0.08,
+    sgaAnnual: 36240, affiliate: 436, discountRate: 0.12, horizonYears: 10,
+    atmOption: 0.02, ecoOption: 0.02, govDiscount: 0.05, riskFree: 0.04, vol: 1.0,
+    ethPrice: 2442.01, sbetPrice: 8.35, optionStrike: 122.88
+  };
+  static WARRANTS = [
+    { n: 1382007, k: 6.15, t: 3.75 }, { n: 691004, k: 6.77, t: 3.75 },
+    { n: 691004, k: 7.38, t: 3.75 }, { n: 691004, k: 8.0, t: 3.75 },
+    { n: 2764013, k: 7.68, t: 3.75 }, { n: 10013351, k: 8.15, t: 3.85 },
+    { n: 252, k: 7.77, t: 3.96 }
+  ];
+  static AFFECTS = {
+    discountRate: ['Discount rate', 'the line in the sand', 'NAV, ETH per share, or any of the three mNAVs'],
+    horizonYears: ['Horizon', 'the line in the sand', 'NAV, ETH per share, or any of the three mNAVs'],
+    aprNative: ['Native staking APR', 'the net yield strip and the line', 'NAV per share, ETH per share, or any mNAV — yield is not an asset you already own'],
+    aprLiquid: ['Liquid staking APR', 'the net yield strip and the line', 'NAV per share, ETH per share, or any mNAV'],
+    sgaAnnual: ['SG&A', 'the net yield strip and the line', 'ETH per 1,000 shares — by exactly 0.00%, which is the whole objection to the north star'],
+    vol: ['Volatility', 'economic mNAV and economic NAV, through the Black-Scholes deduction', 'reported NAV, ETH per share, basic or company fully diluted mNAV'],
+    riskFree: ['Risk-free rate', 'economic mNAV, through the Black-Scholes deduction', 'reported NAV, ETH per share, basic or company fully diluted mNAV'],
+    ethPrice: ['ETH price', 'everything — NAV, all three mNAVs, ETH value per share, the yield strip and the line', 'nothing; no output here is insulated from the ETH price'],
+    sbetPrice: ['SBET price', 'all three mNAVs and the economic share count', 'NAV per share or ETH per share — neither depends on the share price'],
+    ethNative: ['ETH holdings', 'everything on the asset side, the yield strip and the line', 'nothing'],
+    ethLiquid: ['ETH holdings', 'everything on the asset side, the yield strip and the line', 'nothing'],
+    cash: ['Cash', 'NAV and all three mNAVs', 'ETH per 1,000 shares — cash appears nowhere in that formula'],
+    liabilities: ['Liabilities', 'NAV and all three mNAVs', 'ETH per 1,000 shares'],
+    sharesCommon: ['Share count', 'everything per share', 'total NAV in dollars'],
+    mnavBeta: ['mNAV beta', 'the curvature of the regime line in chart mode B-beta', 'a single number anywhere else in the model'],
+    regimeFloor: ['Regime floor', 'chart mode B-beta only', 'anything on the Overview'],
+    ecoOption: ['Ecosystem optionality', 'justified mNAV and the implied price', 'NAV, ETH per share, the observed mNAVs or the line'],
+    govDiscount: ['Governance discount', 'justified mNAV and the implied price', 'NAV, ETH per share, the observed mNAVs or the line'],
+    atmOption: ['ATM option', 'justified mNAV and the implied price', 'NAV, ETH per share, the observed mNAVs or the line — this input is a judgement about a forward option value, set by hand against the capital allocation scorecard']
+  };
+
+  static seedState() {
+    const S = Component.SNAP;
+    return {
+      ethPrice: S.ethPrice, sbetPrice: S.sbetPrice,
+      ethNative: S.ethNative, ethLiquid: S.ethLsETH + S.ethWeETH,
+      cash: S.cash, otherAssets: S.otherAssets, liabilities: S.liabilities,
+      sharesCommon: S.sharesCommon,
+      aprNative: S.aprNative, aprLiquid: S.aprLsETH, sgaAnnual: S.sgaAnnual,
+      discountRate: S.discountRate, horizonYears: S.horizonYears,
+      riskFree: S.riskFree, vol: S.vol,
+      ecoOption: S.ecoOption, govDiscount: S.govDiscount, atmOption: S.atmOption
+    };
+  }
+
+  state = Object.assign(Component.seedState(), {
+    mnavBeta: 0.5, regimeFloor: 0.6, chartMode: 'A',
+    view: null, drawer: false, lastTouched: null, isPhone: false
+  });
+
+  componentDidMount() {
+    const mq = window.matchMedia('(max-width: 620px)');
+    const mqNarrow = window.matchMedia('(max-width: 1100px)');
+    const apply = () => this.setState({ isPhone: mq.matches, isNarrow: mqNarrow.matches });
+    apply();
+    for (const q of [mq, mqNarrow]) {
+      q.addEventListener ? q.addEventListener('change', apply) : q.addListener(apply);
+    }
+  }
+
+  normCdf(x) {
+    if (!Number.isFinite(x)) return x > 0 ? 1 : 0;
+    const b = [0.319381530, -0.356563782, 1.781477937, -1.821255978, 1.330274429];
+    const ax = Math.abs(x);
+    const t = 1 / (1 + 0.2316419 * ax);
+    const poly = t * (b[0] + t * (b[1] + t * (b[2] + t * (b[3] + t * b[4]))));
+    const nd = Math.exp(-0.5 * ax * ax) / Math.sqrt(2 * Math.PI);
+    const c = 1 - nd * poly;
+    return x >= 0 ? c : 1 - c;
+  }
+
+  bsCall(S, K, T, r, v) {
+    if (!(S > 0) || !(K > 0)) return 0;
+    if (!(T > 0) || !(v > 0)) return Math.max(S - K, 0);
+    const sq = v * Math.sqrt(T);
+    const d1 = (Math.log(S / K) + (r + 0.5 * v * v) * T) / sq;
+    return S * this.normCdf(d1) - K * Math.exp(-r * T) * this.normCdf(d1 - sq);
+  }
+
+  div(a, b) {
+    if (!Number.isFinite(a) || !Number.isFinite(b) || b === 0) return null;
+    const r = a / b;
+    return Number.isFinite(r) ? r : null;
+  }
+
+  compute(i) {
+    const S = Number.isFinite(i.sbetPrice) && i.sbetPrice > 0 ? i.sbetPrice : null;
+    const ethTotal = i.ethNative + i.ethLiquid;
+    const ethValue = ethTotal * i.ethPrice / 1000;
+    const navTotal = ethValue + i.cash + i.otherAssets - i.liabilities;
+    const sharesBasic = i.sharesCommon + Component.SNAP.prefundedWarrants;
+
+    let bsDeduct = 0, netItm = 0, proceeds = 0, warrantsTotal = 0, itmCount = 0;
+    for (const w of Component.WARRANTS) {
+      warrantsTotal += w.n;
+      proceeds += w.n * w.k / 1000;
+      if (S !== null && S > w.k) { netItm += w.n * (1 - w.k / S); itmCount += w.n; }
+      else if (S !== null) bsDeduct += w.n * this.bsCall(S, w.k, w.t, i.riskFree, i.vol) / 1000;
+    }
+    proceeds += Component.SNAP.options * Component.SNAP.optionStrike / 1000;
+
+    const rsu = Component.SNAP.rsu;
+    const sharesEconomic = sharesBasic + rsu + netItm;
+    const sharesCompany = sharesBasic + rsu + Component.SNAP.options + warrantsTotal;
+    const navEconomic = navTotal - bsDeduct;
+
+    const navPerShareBasic = this.div(navTotal * 1000, sharesBasic);
+    const navPerShareEconomic = this.div(navEconomic * 1000, sharesEconomic);
+    const navPerShareCompany = this.div(navTotal * 1000, sharesCompany);
+    const navPerShareScenario = this.div((navTotal + proceeds) * 1000, sharesCompany);
+    const ethNavPerShareBasic = this.div(ethValue * 1000, sharesBasic);
+
+    const mnavBasic = navPerShareBasic ? this.div(S, navPerShareBasic) : null;
+    const mnavCompany = navPerShareCompany ? this.div(S, navPerShareCompany) : null;
+    const mnavEconomic = navPerShareEconomic ? this.div(S, navPerShareEconomic) : null;
+
+    const nativeYield = i.ethNative * i.aprNative * i.ethPrice / 1000;
+    const liquidYield = i.ethLiquid * i.aprLiquid * i.ethPrice / 1000;
+    const galaxy = Component.SNAP.galaxyCommit * Component.SNAP.galaxyReturn;
+    const netYield = nativeYield + liquidYield + Component.SNAP.incentivesY1 + galaxy + Component.SNAP.affiliate - i.sgaAnnual;
+    const r = i.discountRate, n = i.horizonYears;
+    const af = r > 0 ? (1 - Math.pow(1 + r, -n)) / r : n;
+    const g = Component.SNAP.incentiveDecay;
+    const decayAf = 1 + r - g !== 0 ? (1 - Math.pow(g / (1 + r), n)) / (1 + r - g) : n;
+    const incY1 = Component.SNAP.incentivesY1;
+    const yieldPV = (netYield - incY1) * af + incY1 * decayAf;
+    const yieldPerShare = this.div(yieldPV * 1000, sharesEconomic);
+    const lineInSand = navPerShareEconomic !== null && yieldPerShare !== null ? navPerShareEconomic + yieldPerShare : null;
+
+    const yieldPerShareScenario = this.div(yieldPV * 1000, sharesCompany);
+    const yieldOnNav = this.div(yieldPV, navEconomic);
+    const atmLive = i.atmOption || 0;
+    const netOptionality = atmLive + (i.ecoOption || 0) - (i.govDiscount || 0);
+    const justified = yieldOnNav === null ? null : 1 + yieldOnNav + netOptionality;
+    const justifiedYieldOnly = yieldOnNav === null ? null : 1 + yieldOnNav;
+    const impliedJust = navPerShareEconomic !== null && justified !== null ? navPerShareEconomic * justified : null;
+    const navFullDilution = navTotal + proceeds;
+    const yieldOnNavScenario = this.div(yieldPV, navFullDilution);
+    const justifiedScenario = yieldOnNavScenario === null ? null : 1 + yieldOnNavScenario + netOptionality;
+    const justifiedOnScenario = navPerShareScenario !== null && justifiedScenario !== null ? navPerShareScenario * justifiedScenario : null;
+    const lineOnScenario = navPerShareScenario !== null && yieldPerShareScenario !== null ? navPerShareScenario + yieldPerShareScenario : null;
+    const identityLhs = impliedJust !== null && lineInSand !== null ? impliedJust - lineInSand : null;
+    const identityRhs = navPerShareEconomic !== null ? netOptionality * navPerShareEconomic : null;
+    let identityDiagnosis = '';
+    if (identityLhs !== null && identityRhs !== null && Math.abs(identityLhs - identityRhs) >= 5e-7) {
+      const resid = identityLhs - identityRhs;
+      const cands = [
+        [(this.div(yieldPV, navTotal) - yieldOnNav) * navPerShareEconomic,
+          'Multiple built on total NAV, converted at economic NAV per share — the yield term is dividing by $' + Math.round(navTotal).toLocaleString('en-US') + 'k before the warrant deduction, while the conversion uses economic NAV per share.'],
+        [justified * (navPerShareBasic - navPerShareEconomic),
+          'Multiple built on economic NAV, converted at basic NAV per share — the conversion is ignoring the warrant claims the yield denominator already deducted.'],
+        [justified * (navPerShareScenario - navPerShareEconomic),
+          'Conversion is using the scenario share basis (full dilution with proceeds) against a point-in-time multiple — two different share conventions in one line.']
+      ];
+      let best = null;
+      for (const [expected, msg] of cands) {
+        if (!Number.isFinite(expected)) continue;
+        const err = Math.abs(expected - resid);
+        if (best === null || err < best[0]) best = [err, msg];
+      }
+      identityDiagnosis = best && best[0] < Math.abs(resid) * 0.02
+        ? best[1]
+        : 'Residual of $' + resid.toFixed(4) + ' per share does not match a known basis mismatch — the yield term, the line and the per-share conversion are not all on one basis.';
+    }
+
+    return {
+      yieldPerShareScenario, yieldOnNav, justified, justifiedYieldOnly, impliedJust, justifiedOnScenario, lineOnScenario, atmLive,
+      navFullDilution, yieldOnNavScenario, justifiedScenario, netOptionality, identityLhs, identityRhs, identityDiagnosis,
+      ethTotal, ethValue, navTotal, navEconomic, bsDeduct, netItm, itmCount, proceeds, warrantsTotal,
+      sharesBasic, sharesEconomic, sharesCompany, rsu,
+      navPerShareBasic, navPerShareEconomic, navPerShareCompany, navPerShareScenario, ethNavPerShareBasic,
+      mnavBasic, mnavCompany, mnavEconomic,
+      nativeYield, liquidYield, galaxy, netYield, yieldPV, yieldPerShare, lineInSand, af, decayAf,
+      ethConcBasic: this.div(ethTotal * 1000, sharesBasic),
+      ethConcEconomic: this.div(ethTotal * 1000, sharesEconomic),
+      ethConcCompany: this.div(ethTotal * 1000, sharesCompany)
+    };
+  }
+
+  econAt(i, c, nav, S) {
+    let bs = 0, net = 0;
+    if (!(S > 0)) return { shares: null, navPS: null, mnav: null, bs: null };
+    for (const w of Component.WARRANTS) {
+      if (S > w.k) net += w.n * (1 - w.k / S);
+      else bs += w.n * this.bsCall(S, w.k, w.t, i.riskFree, i.vol) / 1000;
+    }
+    const shares = c.sharesBasic + c.rsu + net;
+    const navPS = this.div((nav - bs) * 1000, shares);
+    return { shares, bs, navPS, mnav: navPS ? this.div(S, navPS) : null };
+  }
+
+  scenarioAt(i, c, eth) {
+    const navBare = (i.ethNative + i.ethLiquid) * eth / 1000 + i.cash + i.otherAssets - i.liabilities;
+    const nav = navBare + c.proceeds;
+    const yr = (i.ethNative * i.aprNative + i.ethLiquid * i.aprLiquid) * eth / 1000
+      + Component.SNAP.incentivesY1 + c.galaxy + Component.SNAP.affiliate - i.sgaAnnual;
+    const navPS = this.div(nav * 1000, c.sharesCompany);
+    const yieldPS = this.div(yr * c.af * 1000, c.sharesCompany);
+    const navPSEcon = this.div((navBare - c.bsDeduct) * 1000, c.sharesEconomic);
+    const yieldPSEcon = this.div(yr * c.af * 1000, c.sharesEconomic);
+    return {
+      navBare, nav, navPS, yieldPS, navPSEcon,
+      line: navPS !== null && yieldPS !== null ? navPS + yieldPS : null,
+      lineEcon: navPSEcon !== null && yieldPSEcon !== null ? navPSEcon + yieldPSEcon : null
+    };
+  }
+
+  nice(lo, hi) {
+    if (!Number.isFinite(lo) || !Number.isFinite(hi) || hi <= lo) return [0, 1, 0.25];
+    const raw = (hi - lo) / 4;
+    const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    const step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => s >= raw) || mag * 10;
+    return [Math.floor(lo / step) * step, Math.ceil(hi / step) * step, step];
+  }
+
+  frame(xDom, yDom, geom) {
+    const g = geom || { W: 760, H: 300, L: 52, R: 14, T: 16, B: 30 };
+    const sx = (x) => g.L + ((x - xDom[0]) / (xDom[1] - xDom[0])) * (g.W - g.L - g.R);
+    const sy = (y) => g.H - g.B - ((y - yDom[0]) / (yDom[1] - yDom[0])) * (g.H - g.T - g.B);
+    return { g, sx, sy };
+  }
+
+  path(f, pts, key) {
+    let d = '';
+    for (const p of pts) {
+      const v = p[key];
+      if (v === null || !Number.isFinite(v)) continue;
+      d += (d ? ' L ' : 'M ') + f.sx(p.x).toFixed(2) + ' ' + f.sy(v).toFixed(2);
+    }
+    return d;
+  }
+
+  ticks(f, dom, fmt, axis) {
+    const [lo, hi, step] = dom;
+    const out = [];
+    for (let v = lo; v <= hi + step / 1000; v += step) {
+      out.push(axis === 'y'
+        ? { pos: f.sy(v).toFixed(2), top: ((f.sy(v) / 300) * 100).toFixed(3) + '%', label: fmt(v) }
+        : { pos: f.sx(v).toFixed(2), left: ((f.sx(v) / 760) * 100).toFixed(3) + '%', label: fmt(v) });
+    }
+    return out;
+  }
+
+  chart1(i, c, mode) {
+    const spot = i.ethPrice;
+    const regime0 = this.div(i.sbetPrice, c.navPerShareScenario);
+    const pts = [];
+    if (mode === 'A') {
+      const base = c.navPerShareBasic || 1;
+      const levels = [];
+      for (let k = 0; k <= 72; k++) levels.push(0.3 + (2.85 * k) / 72);
+      for (const w of Component.WARRANTS) { const l = w.k / base; if (l > 0.3 && l < 3.15) { levels.push(l - 0.0004); levels.push(l + 0.0004); } }
+      levels.sort((a, b) => a - b);
+      for (const lv of levels) {
+        const S = lv * base;
+        const e = this.econAt(i, c, c.navTotal, S);
+        pts.push({ x: S, basic: lv, fd: this.div(S, c.navPerShareCompany), econ: e.mnav });
+      }
+      const yD = [0, 3.5, 0.5];
+      const f = this.frame([pts[0].x, pts[pts.length - 1].x], yD);
+      return {
+        mode: 'A', f,
+        paths: { basic: this.path(f, pts, 'basic'), fd: this.path(f, pts, 'fd'), econ: this.path(f, pts, 'econ') },
+        yTicks: this.ticks(f, yD, v => v.toFixed(1) + '×', 'y'),
+        xTicks: [
+          { pos: f.sx(pts[0].x).toFixed(2), left: ((f.sx(pts[0].x) / 760) * 100).toFixed(3) + '%', label: '$' + pts[0].x.toFixed(2) },
+          { pos: f.sx(pts[pts.length - 1].x).toFixed(2), left: ((f.sx(pts[pts.length - 1].x) / 760) * 100).toFixed(3) + '%', label: '$' + pts[pts.length - 1].x.toFixed(2) }
+        ],
+        today: { x: f.sx(i.sbetPrice).toFixed(2), left: ((f.sx(i.sbetPrice) / 760) * 100).toFixed(3) + '%', label: '$' + i.sbetPrice.toFixed(2) },
+        band: null,
+        xLabel: 'SBET price · x-axis floats as 0.30× to 3.15× of NAV per share',
+        caption: 'Frozen: the ETH price and therefore NAV. Only the share price moves. The divergence between the company method and the economic basis is widest at a discount and narrows as the stock rises — phantom shares are phantom only while they are out of the money. Kinks fall at the warrant strikes.'
+      };
+    }
+    const drift = mode === 'Bbeta';
+    for (let k = 0; k <= 70; k++) {
+      const eth = 750 + (7250 * k) / 70;
+      const sc = this.scenarioAt(i, c, eth);
+      const reg = drift ? Math.max(i.regimeFloor, (regime0 || 0) * Math.pow(eth / spot, i.mnavBeta)) : (regime0 || 0);
+      const S = sc.navPS !== null ? reg * sc.navPS : null;
+      const e = S !== null ? this.econAt(i, c, sc.nav, S) : { mnav: null };
+      pts.push({
+        x: eth,
+        basic: S !== null ? this.div(S * c.sharesBasic, sc.nav * 1000) : null,
+        fd: S !== null ? this.div(S * c.sharesCompany, sc.nav * 1000) : null,
+        econ: e.mnav
+      });
+    }
+    const vals = pts.flatMap(p => [p.basic, p.fd, p.econ]).filter(v => v !== null && Number.isFinite(v));
+    const yD = this.nice(Math.min.apply(null, vals) * 0.96, Math.max.apply(null, vals) * 1.04);
+    const f = this.frame([750, 8000], yD);
+    const flatLo = Math.min(pts[0].basic, pts[0].fd), flatHi = Math.max(pts[0].basic, pts[0].fd);
+    return {
+      mode: drift ? 'Bbeta' : 'B', f,
+      paths: { basic: this.path(f, pts, 'basic'), fd: this.path(f, pts, 'fd'), econ: this.path(f, pts, 'econ') },
+      yTicks: this.ticks(f, yD, v => v.toFixed(2) + '×', 'y'),
+      xTicks: [
+        { pos: f.sx(750).toFixed(2), left: ((f.sx(750) / 760) * 100).toFixed(3) + '%', label: '$750' },
+        { pos: f.sx(8000).toFixed(2), left: ((f.sx(8000) / 760) * 100).toFixed(3) + '%', label: '$8,000' }
+      ],
+      today: {
+        x: f.sx(Math.min(8000, Math.max(750, spot))).toFixed(2),
+        left: ((f.sx(Math.min(8000, Math.max(750, spot))) / 760) * 100).toFixed(3) + '%',
+        label: '$' + Math.round(spot).toLocaleString('en-US')
+      },
+      band: drift ? null : {
+        y: f.sy(flatHi).toFixed(2),
+        yLo: f.sy(flatLo).toFixed(2),
+        h: Math.max(6, f.sy(flatLo) - f.sy(flatHi)).toFixed(2),
+        labelY: (f.sy(flatHi) + 11).toFixed(2)
+      },
+      xLabel: 'ETH price · SBET is derived, not independent',
+      caption: drift
+        ? 'Frozen: nothing. '.slice(0, 0) + 'Frozen: nothing. The regime drifts with the ETH price at the beta set below, so the chart traces a path rather than a frozen multiple. Conditional on the drift assumption — not a forecast.'
+        : 'Frozen: the mNAV regime, at the observed multiple. SBET price is derived as regime × NAV per share, so both prices move together and the NAV terms cancel: basic and fully diluted return flat lines, fully diluted sitting a fixed 9.1% above basic. Only the economic line curves, because the share count and the out-of-the-money deduction respond to the derived share price.'
+    };
+  }
+
+  chart2(i, c) {
+    const regime0 = this.div(i.sbetPrice, c.navPerShareScenario) || 0;
+    const just = c.justifiedScenario || 1;
+    const pts = [];
+    for (let k = 0; k <= 60; k++) {
+      const eth = 750 + (7250 * k) / 60;
+      const sc = this.scenarioAt(i, c, eth);
+      pts.push({ x: eth, nav: sc.navPS, obs: sc.navPS * regime0, just: sc.navPS * just, line: sc.line });
+    }
+    const vals = pts.flatMap(p => [p.obs, p.just, p.line]).filter(v => Number.isFinite(v));
+    const yD = this.nice(0, Math.max.apply(null, vals));
+    const f = this.frame([750, 8000], yD);
+    return {
+      f,
+      paths: {
+        nav: this.path(f, pts, 'nav'), obs: this.path(f, pts, 'obs'),
+        just: this.path(f, pts, 'just'), line: this.path(f, pts, 'line')
+      },
+      yTicks: this.ticks(f, yD, v => '$' + v.toFixed(0), 'y'),
+      xTicks: [
+        { pos: f.sx(750).toFixed(2), left: ((f.sx(750) / 760) * 100).toFixed(3) + '%', label: '$750' },
+        { pos: f.sx(8000).toFixed(2), left: ((f.sx(8000) / 760) * 100).toFixed(3) + '%', label: '$8,000' }
+      ],
+      today: {
+        x: f.sx(Math.min(8000, Math.max(750, i.ethPrice))).toFixed(2),
+        left: ((f.sx(Math.min(8000, Math.max(750, i.ethPrice))) / 760) * 100).toFixed(3) + '%',
+        label: 'ETH $' + Math.round(i.ethPrice).toLocaleString('en-US')
+      },
+      caption: 'Basis: full dilution with proceeds, the scenario convention — every warrant exercises and every dollar of exercise money lands in NAV, so nothing here depends on a price the chart is itself solving for. Frozen: the mNAV regimes and any discretionary financing. The regime lines are conditional — if the discount persists, if the justified multiple is earned — never forecasts. The floor is assets plus the yield component in dollar terms: below it the market is paying nothing at all for the strategy.'
+    };
+  }
+
+  buybackRows(i, c) {
+    const spend = 50000;
+    const prices = [4, i.sbetPrice, c.ethNavPerShareBasic, c.navPerShareEconomic, 14, 22, 28]
+      .filter(p => Number.isFinite(p) && p > 0).sort((a, b) => a - b);
+    const out = [];
+    for (const p of prices) {
+      if (!(p > 0)) continue;
+      const bought = (spend * 1000) / p;
+      const shares = c.sharesBasic - bought;
+      if (!(shares > 0)) continue;
+      const navPS = this.div((c.navTotal - spend) * 1000, shares);
+      const conc = this.div(c.ethTotal * 1000, shares);
+      out.push({
+        price: this.usd(p, 2),
+        navDelta: this.pct(this.div(navPS - c.navPerShareBasic, c.navPerShareBasic), 2),
+        concDelta: this.pct(this.div(conc - c.ethConcBasic, c.ethConcBasic), 2),
+        verdict: p < c.ethNavPerShareBasic ? 'Beats buying ETH' : 'Buying ETH wins',
+        good: p < c.ethNavPerShareBasic ? 'var(--pos)' : 'var(--neg)',
+        navGood: navPS > c.navPerShareBasic ? 'var(--pos)' : 'var(--neg)'
+      });
+    }
+    return out;
+  }
+
+  scenarioGrid(i, c) {
+    const regime0 = this.div(i.sbetPrice, c.navPerShareScenario) || 0;
+    const regimes = [regime0, 1, c.justifiedScenario || 1, 1.3];
+    const rows = [];
+    for (const eth of [1000, 1500, i.ethPrice, 3000, 4500, 6000]) {
+      const sc = this.scenarioAt(i, c, eth);
+      rows.push({
+        bg: Math.abs(eth - i.ethPrice) < 1 ? 'var(--bg-subtle)' : 'transparent',
+        eth: '$' + Math.round(eth).toLocaleString('en-US'),
+        nav: this.usd(sc.navPS, 2),
+        cells: regimes.map(r => ({ v: this.usd(sc.navPS * r, 2) })),
+        line: this.usd(sc.line, 2)
+      });
+    }
+    const names = ['observed', 'parity', 'justified', 'assumed'];
+    return { rows, heads: regimes.map((r, k) => ({ label: r.toFixed(2) + '×', sub: names[k] })) };
+  }
+
+  d(v, n) { return v === null || !Number.isFinite(v) ? '—' : v.toFixed(n); }
+  usd(v, n) { if (v === null || !Number.isFinite(v)) return '—'; const d = n === undefined ? 2 : n; return (v < 0 ? '-$' : '$') + Math.abs(v).toFixed(d); }
+  mult(v, n) { return v === null || !Number.isFinite(v) ? '—' : v.toFixed(n === undefined ? 2 : n) + '×'; }
+  strike(v) {
+    if (v === null || !Number.isFinite(v)) return '—';
+    return v < 0.01 ? 'nil strike · $' + v.toFixed(4) : '$' + v.toFixed(2);
+  }
+  mm(v, neg) {
+    if (v === null || !Number.isFinite(v)) return '—';
+    const s = '$' + (Math.abs(v) / 1000).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + 'm';
+    return neg || v < 0 ? '(' + s + ')' : s;
+  }
+  int(v) { return v === null || !Number.isFinite(v) ? '—' : Math.round(v).toLocaleString('en-US'); }
+  pct(v, n) { return v === null || !Number.isFinite(v) ? '—' : (v * 100).toFixed(n === undefined ? 1 : n) + '%'; }
+
+  set(key) {
+    return (v) => {
+      const num = typeof v === 'number' ? v : Number(v && v.target ? v.target.value : NaN);
+      if (!Number.isFinite(num)) return;
+      this.setState({ [key]: num, lastTouched: key });
+    };
+  }
+
+  marketOpen() {
+    const now = new Date();
+    const day = now.getUTCDay();
+    const mins = now.getUTCHours() * 60 + now.getUTCMinutes();
+    return day >= 1 && day <= 5 && mins >= 810 && mins < 1200;
+  }
+
+  renderVals() {
+    const s = this.state;
+    const view = s.view || this.props.startView || 'overview';
+    const c = this.compute(s);
+    const base = this.compute(Component.seedState());
+    const chk = (v, targetStr) => {
+      if (v === null || !Number.isFinite(v)) return '—';
+      const dp = (targetStr.split('.')[1] || '').length;
+      const target = Number(targetStr);
+      const ok = Math.abs(v - target) < 5 * Math.pow(10, -dp - 1);
+      return v.toFixed(dp) + (ok ? ' ✓' : ' ✗ ' + targetStr);
+    };
+    const T = Component.TARGETS;
+    const seed = Component.seedState();
+    const atDefaults = Object.keys(seed).every((k) => s[k] === seed[k]);
+
+    const open = true;
+    const ethStamp = 'ETH close ' + Component.ASOF_SHORT + ' UTC';
+    const worst = 'green';
+    const reason = '';
+
+    const a = Component.AFFECTS[s.lastTouched];
+    const notesReactive = this.props.notesReactive !== false;
+    const gap = c.lineInSand && s.sbetPrice ? 1 - s.sbetPrice / c.lineInSand : null;
+    const span = c.lineInSand ? c.lineInSand * 1.18 : 1;
+    const pos = (v) => (v === null || !Number.isFinite(v) ? '0%' : Math.max(0, Math.min(100, (v / span) * 100)).toFixed(2) + '%');
+
+    const sga = s.sgaAnnual;
+    const navAfter = this.div((c.navTotal - sga) * 1000, c.sharesBasic);
+    const ethSold = this.div(sga * 1000, s.ethPrice);
+    const concAfter = this.div((c.ethTotal - (ethSold || 0)) * 1000, c.sharesBasic);
+    const opex = [
+      {
+        label: 'Funded from cash', nav: this.pct(this.div(navAfter - c.navPerShareBasic, c.navPerShareBasic), 2),
+        conc: this.pct(0, 2), concColor: 'var(--navy-light)'
+      },
+      {
+        label: 'Funded by selling ETH', nav: this.pct(this.div(navAfter - c.navPerShareBasic, c.navPerShareBasic), 2),
+        conc: this.pct(this.div(concAfter - c.ethConcBasic, c.ethConcBasic), 2), concColor: 'var(--neg)'
+      }
+    ];
+    const waterfall = [
+      { label: 'Basic', shares: this.int(c.sharesBasic), nav: this.mm(c.navTotal), navPS: this.usd(c.navPerShareBasic), mnav: this.mult(c.mnavBasic), bg: 'transparent' },
+      { label: 'Economic · treasury stock method', shares: this.int(c.sharesEconomic), nav: this.mm(c.navEconomic), navPS: this.usd(c.navPerShareEconomic), mnav: this.mult(c.mnavEconomic), bg: 'var(--bg-subtle)' },
+      { label: 'Fully diluted · company method', shares: this.int(c.sharesCompany), nav: this.mm(c.navTotal), navPS: this.usd(c.navPerShareCompany), mnav: this.mult(c.mnavCompany), bg: 'transparent' }
+    ];
+    const mode = s.chartMode;
+    const ch1 = this.chart1(s, c, mode);
+    const ch2 = this.chart2(s, c);
+    const grid = this.scenarioGrid(s, c);
+    const tranches = Component.WARRANTS.map(w => {
+      const itm = s.sbetPrice > w.k;
+      const bs = itm ? null : this.bsCall(s.sbetPrice, w.k, w.t, s.riskFree, s.vol);
+      return {
+        n: this.int(w.n), k: this.usd(w.k, 2), t: w.t.toFixed(2) + ' yr',
+        state: itm ? 'In the money' : 'Out of the money',
+        stateColor: itm ? 'var(--pos)' : 'var(--navy-light)',
+        bs: itm ? '—' : this.usd(bs, 2),
+        deduct: itm ? '—' : this.mm(w.n * bs / 1000, true),
+        net: itm ? this.int(w.n * (1 - w.k / s.sbetPrice)) : '0'
+      };
+    });
+
+    return {
+      ch1, ch2,
+      chartMode: mode,
+      modeATab: { border: mode === 'A' ? 'var(--gold)' : 'var(--border-mid)', color: mode === 'A' ? 'var(--navy)' : 'var(--navy-light)' },
+      modeBTab: { border: mode === 'B' ? 'var(--gold)' : 'var(--border-mid)', color: mode === 'B' ? 'var(--navy)' : 'var(--navy-light)' },
+      modeCTab: { border: mode === 'Bbeta' ? 'var(--gold)' : 'var(--border-mid)', color: mode === 'Bbeta' ? 'var(--navy)' : 'var(--navy-light)' },
+      setModeA: () => this.setState({ chartMode: 'A' }),
+      setModeB: () => this.setState({ chartMode: 'B' }),
+      setModeC: () => this.setState({ chartMode: 'Bbeta' }),
+      showBand: mode === 'B',
+      showBeta: mode === 'Bbeta',
+      buybacks: this.buybackRows(s, c),
+      opex, grid, tranches, waterfall,
+      pending: { show: false, label: '' },
+      isArgument: view === 'argument',
+      isCapital: view === 'capital',
+      onEco: this.set('ecoOption'),
+      onGov: this.set('govDiscount'),
+      onAtm: this.set('atmOption'),
+      onBeta: this.set('mnavBeta'),
+      onFloor: this.set('regimeFloor'),
+      notesLabel: 'Notes · ' + (view === 'overview' ? 'Overview' : view === 'argument' ? 'The argument' : 'Capital structure'),
+      cardCols: s.isNarrow ? '1fr 1fr' : 'repeat(2, 1fr)',
+      showDesktop: !s.isPhone,
+      showPhone: s.isPhone,
+      isOverview: view === 'overview',
+      drawerOpen: s.drawer,
+      showRegression: this.props.showRegressionStrip !== false,
+      provisional: !open,
+      statusColor: worst === 'green' ? 'var(--pos)' : 'var(--gold)',
+      statusReason: reason,
+      printBasis: 'Data as of — fundamentals ' + Component.ASOF_LONG + ' · SBET close $' + Component.SNAP.sbetPrice.toFixed(2) + ' · ETH close $' + Component.SNAP.ethPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ', ' + Component.ASOF_SHORT + ' UTC · figures on the seeded closes throughout',
+      dataAsOf: 'Data as of — fundamentals ' + Component.ASOF_LONG + ' · SBET close ' + Component.ASOF_SHORT + ' · ' + ethStamp,
+      framingLine: c.navPerShareEconomic
+        ? 'SBET trades at ' + this.usd(s.sbetPrice, 2) + '. Economic NAV per share — ETH, cash and other assets, less liabilities and the value of the warrants written against them — is ' + this.usd(c.navPerShareEconomic, 2) + '. Add the yield that base throws off, and value the capital-markets machine at zero, and the line is ' + this.usd(c.lineInSand, 2) + '.'
+        : 'SBET valuation — awaiting a valid share price.',
+      barSentence: 'The market price sits ' + this.pct(Math.abs(gap === null ? 0 : gap), 1) + (gap !== null && gap < 0 ? ' above' : ' below') + ' the line. Below the line you are buying assets plus the yield they throw off at a discount; above it you are additionally paying for management’s future ability to sell equity above NAV to somebody else.',
+      bar: { priceLeft: pos(s.sbetPrice), navLeft: pos(c.navPerShareEconomic), lineLeft: pos(c.lineInSand) },
+      tab: {
+        overviewBorder: view === 'overview' ? 'var(--gold)' : 'transparent',
+        overviewColor: view === 'overview' ? 'var(--navy)' : 'var(--navy-light)',
+        argumentBorder: view === 'argument' ? 'var(--gold)' : 'transparent',
+        argumentColor: view === 'argument' ? 'var(--navy)' : 'var(--navy-light)',
+        capitalBorder: view === 'capital' ? 'var(--gold)' : 'transparent',
+        capitalColor: view === 'capital' ? 'var(--navy)' : 'var(--navy-light)'
+      },
+      affects: {
+        show: notesReactive && !!a,
+        label: a ? a[0] : '',
+        does: a ? a[1] : '',
+        doesNot: a ? a[2] : ''
+      },
+      navActions: [{ label: 'Methodology', onClick: () => this.setState({ drawer: true }) }],
+      openDrawer: () => this.setState({ drawer: true }),
+      closeDrawer: () => this.setState({ drawer: false }),
+      goOverview: () => this.setState({ view: 'overview' }),
+      goArgument: () => this.setState({ view: 'argument' }),
+      goCapital: () => this.setState({ view: 'capital' }),
+      resetInputs: () => this.setState(Object.assign(Component.seedState(), { lastTouched: null, drafts: {} })),
+      inp: {
+        ethPrice: s.ethPrice, sbetPrice: s.sbetPrice, ethNative: s.ethNative, ethLiquid: s.ethLiquid,
+        cash: s.cash, liabilities: s.liabilities, sharesCommon: s.sharesCommon,
+        discountRate: s.discountRate, horizonYears: s.horizonYears, aprNative: s.aprNative,
+        aprLiquid: s.aprLiquid, vol: s.vol, riskFree: s.riskFree, sgaAnnualM: s.sgaAnnual / 1000,
+        ecoOption: s.ecoOption, govDiscount: s.govDiscount, atmOption: s.atmOption,
+        mnavBeta: s.mnavBeta, regimeFloor: s.regimeFloor
+      },
+      onEthPrice: this.set('ethPrice'),
+      onEthPrice2: this.set('ethPrice'),
+      onSbetPrice: this.set('sbetPrice'),
+      onEthNative: this.set('ethNative'),
+      onEthLiquid: this.set('ethLiquid'),
+      onCash: this.set('cash'),
+      onLiabilities: this.set('liabilities'),
+      onSharesCommon: this.set('sharesCommon'),
+      onDiscountRate: this.set('discountRate'),
+      onHorizon: this.set('horizonYears'),
+      onAprNative: this.set('aprNative'),
+      onAprLiquid: this.set('aprLiquid'),
+      onVol: this.set('vol'),
+      onRiskFree: this.set('riskFree'),
+      onSga: (v) => this.setState({ sgaAnnual: Number(v) * 1000, lastTouched: 'sgaAnnual' }),
+      l: {
+        dashConc: Component.SRC.dashConc.toFixed(2),
+        seedNote: 'Both seeded SBET prices are official NASDAQ closes: $4.80 on 30 June 2026 and '
+          + this.usd(Component.SNAP.sbetPrice, 2) + ' on ' + Component.SRC.closeDate + '. The seeded ETH price of '
+          + this.usd(Component.SNAP.ethPrice, 2) + ' is the CoinGecko daily close in UTC for the same date, not an intraday quote.',
+        holdingsNote: 'Holdings here are the ' + this.int(Component.SRC.holdingsEth) + ' ETH from the ' + Component.SRC.holdingsRelease
+          + ' release. The company measures concentration at midnight UTC on the most recent Sunday, so its dashboard reads '
+          + this.int(Component.SRC.dashEth) + ' as of ' + Component.SRC.dashAsOf + ' against this figure. The difference is the measurement date, not a restatement.',
+        ethHoldings: 'ETH holdings · ' + this.int(c.ethTotal) + ' ETH at $' + Number(s.ethPrice).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+        warrantSplit: this.int(c.warrantsTotal - c.itmCount) + ' of ' + this.int(c.warrantsTotal) + ' warrant shares are out of the money at ' + this.usd(s.sbetPrice, 2) + '.',
+        tsmRow: 'Net warrant shares · treasury stock method' + (c.itmCount > 0 ? ' · ' + this.int(c.itmCount) + ' in the money' : ' · none in the money'),
+        yieldRow: 'Cash flows the base throws off · ' + s.horizonYears + ' years at ' + this.pct(s.discountRate, 1),
+        nativeYield: 'Native staking · ' + this.pct(s.aprNative, 1) + ' on ' + this.int(s.ethNative) + ' ETH',
+        liquidYield: 'Liquid staking and restaking · ' + this.pct(s.aprLiquid, 1) + ' on ' + this.int(s.ethLiquid) + ' ETH',
+        decayPct: this.pct(1 - Component.SNAP.incentiveDecay, 0),
+        pvRow: 'Present value · ' + s.horizonYears + ' years at ' + this.pct(s.discountRate, 1) + ', incentives decayed ' + this.pct(1 - Component.SNAP.incentiveDecay, 0) + '/yr',
+        netYieldTrace: 'Net yield, year one',
+        pvTrace: 'Present value · ' + s.horizonYears + ' years at ' + this.pct(s.discountRate, 1) + ' · level factor ' + this.d(c.af, 6) + ', decayed factor ' + this.d(c.decayAf, 6) + ' on incentives',
+        opexHead: 'Paying ' + this.mm(s.sgaAnnual) + ' of SG&A',
+        scenarioTwin: 'Scenario twin · ' + this.mult(c.justifiedScenario) + ' on full dilution, used by the grid and chart 2',
+        itmSummary: c.itmCount > 0 ? this.int(c.itmCount) + ' in the money' : 'None in the money'
+      },
+      v: {
+        navPerShareEconomic: this.usd(c.navPerShareEconomic),
+        navPerShareBasic: this.usd(c.navPerShareBasic),
+        navPerShareCompany: this.usd(c.navPerShareCompany),
+        ethNavPerShareBasic: this.usd(c.ethNavPerShareBasic),
+        ethValuePerShareEconomic: this.usd(this.div(c.ethValue * 1000, c.sharesEconomic)),
+        mnavEconomic: this.mult(c.mnavEconomic),
+        mnavBasic: this.mult(c.mnavBasic),
+        mnavCompany: this.mult(c.mnavCompany),
+        lineInSand: this.usd(c.lineInSand),
+        yieldPerShare: this.usd(c.yieldPerShare),
+        sbetPrice: this.usd(s.sbetPrice, 2),
+        ethConcBasic: this.d(c.ethConcBasic, 4),
+        ethConcEconomic: this.d(c.ethConcEconomic, 4),
+        ethConcCompany: this.d(c.ethConcCompany, 4),
+        concVsLaunch: this.pct(this.div(c.ethConcCompany - 2.0, 2.0), 1),
+        concVsPeak: this.pct(this.div(c.ethConcCompany - 4.03, 4.03), 1),
+        discountToNav: c.navPerShareEconomic ? this.pct(1 - s.sbetPrice / c.navPerShareEconomic, 1) : '—',
+        discountToLine: this.pct(gap, 1),
+        ethValueM: this.mm(c.ethValue), cashM: this.mm(s.cash), otherM: this.mm(s.otherAssets),
+        liabM: this.mm(s.liabilities, true), navTotalM: this.mm(c.navTotal),
+        bsDeductM: this.mm(c.bsDeduct, true), navEconomicM: this.mm(c.navEconomic),
+        sharesCommon: this.int(s.sharesCommon), prefunded: this.int(Component.SNAP.prefundedWarrants),
+        sharesBasic: this.int(c.sharesBasic), rsu: this.int(c.rsu), netItm: this.int(c.netItm),
+        sharesEconomic: this.int(c.sharesEconomic), sharesCompany: this.int(c.sharesCompany),
+        sharesScenario: this.int(c.sharesCompany) + ' + ' + this.mm(c.proceeds) + ' proceeds',
+        nativeYieldM: this.mm(c.nativeYield), liquidYieldM: this.mm(c.liquidYield),
+        incentivesM: this.mm(Component.SNAP.incentivesY1), galaxyM: this.mm(c.galaxy),
+        affiliateM: this.mm(Component.SNAP.affiliate), sgaM: this.mm(s.sgaAnnual, true),
+        netYieldM: this.mm(c.netYield), yieldPVM: this.mm(c.yieldPV),
+        navTrap: (() => {
+          const perShare = this.div(c.bsDeduct * 1000, c.sharesEconomic);
+          if (perShare === null) return '';
+          const eth = c.ethNavPerShareBasic;
+          const nav = c.navPerShareEconomic;
+          const amt = perShare < 0.005
+            ? 'Almost no Black-Scholes value is deducted here: at ' + this.usd(s.sbetPrice, 2) + ' nearly every warrant tranche is in the money, so it is counted in the share base instead.'
+            : 'Net of ' + this.usd(perShare) + ' a share of Black-Scholes value on the out-of-the-money warrants. That is real value belonging to warrant holders.';
+          const rel = (nav === null || eth === null) ? ''
+            : nav < eth
+              ? ' That deduction, and the wider share base, are why this sits below the ETH tile.'
+              : ' Cash and other assets net of liabilities more than cover it, so this sits above the ETH tile.';
+          return amt + rel;
+        })(),
+        mnavTrap: (() => {
+          if (c.mnavEconomic === null) return '';
+          return 'A discount is not automatically an opportunity. This is also not independent information: it is ' + this.usd(s.sbetPrice, 2) + ' \u00f7 ' + this.usd(c.navPerShareEconomic, 2) + ' restated.';
+        })(),
+        lineTrap: (() => {
+          if (c.lineInSand === null || c.netOptionality === null) return '';
+          const below = c.impliedJust !== null && c.impliedJust < c.lineInSand;
+          return 'This is the line in the sand and it excludes optionality. Net optionality is ' + this.pct(c.netOptionality, 2)
+            + ', so the justified price of ' + this.usd(c.impliedJust, 2) + ' sits ' + (below ? 'below' : 'above') + ' this line.';
+        })(),
+        ethSplit: (() => {
+          const ls = Component.SNAP.ethLsETH, we = Component.SNAP.ethWeETH;
+          const snapLiq = ls + we;
+          if (!snapLiq || !Number.isFinite(s.ethLiquid)) return '';
+          const lsU = s.ethLiquid * ls / snapLiq, weU = s.ethLiquid * we / snapLiq;
+          const tot = c.ethTotal;
+          const pc = (v) => this.pct(this.div(v, tot), 1);
+          return 'Native ' + this.int(s.ethNative) + ' · ' + pc(s.ethNative)
+            + '   LsETH ' + this.int(lsU) + ' · ' + pc(lsU)
+            + '   weETH ' + this.int(weU) + ' · ' + pc(weU);
+        })(),
+        ethSplitCaveat: (() => {
+          const snapLiq = Component.SNAP.ethLsETH + Component.SNAP.ethWeETH;
+          return Number.isFinite(s.ethLiquid) && Math.abs(s.ethLiquid - snapLiq) > 0.5
+            ? ' The two component lines are inferred by holding the snapshot\u2019s composition, since liquid ETH has been edited away from ' + this.int(snapLiq) + '.'
+            : '';
+        })(),
+        lstBasis: (() => {
+          const liq = s.ethLiquid;
+          if (!Number.isFinite(liq)) return '';
+          return 'The ' + this.int(liq) + ' LsETH and weETH units are receipt tokens, not spot ether: LsETH is a Liquid Collective staking receipt and weETH is an ether.fi restaking token deployed on Linea. Both are valued here at ether spot on an as-if-redeemed basis.';
+        })(),
+        lstGaap: (() => {
+          const carry = 369100;
+          const spot = Number.isFinite(s.ethLiquid) ? s.ethLiquid * s.ethPrice / 1000 : null;
+          if (spot === null) return '';
+          const gap = spot - carry;
+          const market = 'Against the tokens\u2019 own market value it is conservative: liquid staking tokens accrue rewards and generally trade at a premium to ether, which valuing them at parity ignores.';
+          const juneUnits = 254097;
+          const unitDrift = Number.isFinite(s.ethLiquid) ? (s.ethLiquid - juneUnits) * s.ethPrice / 1000 : 0;
+          const gaap = 'Against GAAP it is ' + (gap >= 0 ? 'more aggressive' : 'more conservative')
+            + ': those units carry at cost less impairment on the balance sheet, $369.1m at 30 June 2026 against ' + this.mm(spot)
+            + ' at spot, so this NAV runs ' + this.mm(Math.abs(gap)) + (gap >= 0 ? ' above' : ' below') + ' the carrying value.'
+            + ' The two sides sit on different dates: the carrying value covers ' + this.int(juneUnits) + ' units at 30 June against '
+            + this.int(s.ethLiquid) + ' now, so ' + this.mm(Math.abs(unitDrift)) + ' of the difference is units accrued since June rather than price.';
+          const framing = gap >= 0
+            ? 'That is a deliberate choice, and at this price it cuts both ways.'
+            : 'That is a deliberate choice. At this price both comparisons point the same way, and the basis is the conservative one on each.';
+          return framing + ' ' + market + ' ' + gaap + ' That carrying value follows $87.8m of impairments in the June quarter, which are never reversed if the price recovers.';
+        })(),
+        ethPerShareBasis: (() => {
+          const eco = this.div(c.ethValue * 1000, c.sharesEconomic);
+          if (c.ethNavPerShareBasic === null || eco === null) return '';
+          return 'This is ETH concentration in dollars, on basic-equivalent shares, so the tile beside it is on a different denominator. On economic shares the ETH alone is '
+            + this.usd(eco, 2) + '. It carries the same flaw as the concentration figure: it rises on any cash-funded buyback at any price and cannot see operating expense, which is why NAV per share belongs next to it.';
+        })(),
+        navPerShareScenario: this.usd(c.navPerShareScenario),
+        basisNote: 'Full dilution with proceeds · regime ' + this.mult(this.div(s.sbetPrice, c.navPerShareScenario)) + ' × NAV per share ' + this.usd(c.navPerShareScenario) + ', and the justified multiple rebuilt on the same basis at ' + this.mult(c.justifiedScenario) + '. Treasury stock method is for the point-in-time figures on Overview; scenarios use full dilution because it needs no price to resolve.',
+        lineReconcile: 'The same applies to the line column, and it matters more because the line is the app’s headline output. Here it is ' + this.usd(c.lineOnScenario, 2) + ' at today’s ETH price, built on full-dilution NAV per share ' + this.usd(c.navPerShareScenario) + '. The Overview card and the coherence check show ' + this.usd(c.lineInSand, 2) + ', built on economic NAV per share ' + this.usd(c.navPerShareEconomic) + '. Same decomposition, same assets and the same yield strip — only the per-share conversion differs. ' + this.usd(c.lineInSand, 2) + ' is the headline line; the column here exists so the line can be read against the scenario prices beside it on their own basis.',
+        justifiedReconcile: 'The justified column is ' + this.mult(c.justifiedScenario) + ' × full-dilution NAV per share ' + this.usd(c.navPerShareScenario) + ' = ' + this.usd(c.justifiedOnScenario, 2) + '. It is not the trace’s ' + this.mult(c.justified) + ' / ' + this.usd(c.impliedJust, 2) + ': the multiple is rebuilt on this basis rather than carried across, so its yield term divides by full-dilution NAV ' + this.mm(c.navFullDilution) + ' — total NAV plus ' + this.mm(c.proceeds) + ' of exercise proceeds — giving ' + this.pct(c.yieldOnNavScenario, 2) + ' against the trace’s ' + this.pct(c.yieldOnNav, 2) + '. Net optionality is the same ' + this.pct(c.netOptionality, 2) + ' on both. Each figure is internally consistent; neither is a conversion of the other.',
+        justifiedScenario: this.mult(c.justifiedScenario),
+        priceJustifiedScenario: this.usd(c.justifiedOnScenario, 2),
+        yieldOnNavScenario: this.pct(c.yieldOnNavScenario, 2),
+        navFullDilutionK: c.navFullDilution === null ? '—' : '$' + Math.round(c.navFullDilution).toLocaleString('en-US') + 'k',
+        yieldPerShareScenario: this.usd(c.yieldPerShareScenario),
+        yieldOnNav: this.pct(c.yieldOnNav, 2),
+        prefundedStrike: this.strike(0.0001),
+        netOptionality: this.pct(c.netOptionality, 2),
+        optionalityClause: (() => {
+          const n = c.netOptionality;
+          if (n === null || !Number.isFinite(n)) return '—';
+          const p = this.pct(n, 2);
+          if (Math.abs(n) < 0.00005) return p + ', an actual wash';
+          return p + ', a small ' + (n < 0 ? 'drag' : 'addition') + ' rather than a wash';
+        })(),
+        justVsLineWord: c.impliedJust !== null && c.lineInSand !== null && c.impliedJust > c.lineInSand ? 'above' : 'below',
+        identityLhs: this.usd(c.identityLhs, 4),
+        identityRhs: this.usd(c.identityRhs, 4),
+        identityOk: c.identityLhs !== null && c.identityRhs !== null && Math.abs(c.identityLhs - c.identityRhs) < 5e-7 ? 'Closes' : 'Does not close',
+        identityBroken: !!c.identityDiagnosis,
+        identityDiagnosis: c.identityDiagnosis,
+        warrantsTotal: this.int(c.warrantsTotal),
+        optionCount: this.int(Component.SNAP.options),
+        optionStrike: this.usd(Component.SNAP.optionStrike, 2),
+        volPct: this.pct(s.vol, 0),
+        identityColor: c.identityLhs !== null && c.identityRhs !== null && Math.abs(c.identityLhs - c.identityRhs) < 5e-7 ? 'var(--pos)' : 'var(--neg)',
+        mnavEconomic4: this.mult(c.mnavEconomic, 4),
+        justified4: this.mult(c.justified, 4),
+        impliedJust4: this.usd(c.impliedJust, 4),
+        lineInSand4: this.usd(c.lineInSand, 4),
+        justifiedYieldOnly: this.mult(c.justifiedYieldOnly),
+        netYieldK: c.netYield === null ? '—' : '$' + Math.round(c.netYield).toLocaleString('en-US') + 'k',
+        yieldPVK: c.yieldPV === null ? '—' : '$' + Math.round(c.yieldPV).toLocaleString('en-US') + 'k',
+        navTotalK: c.navTotal === null ? '—' : '$' + Math.round(c.navTotal).toLocaleString('en-US') + 'k',
+        navEconomicK: c.navEconomic === null ? '—' : '$' + Math.round(c.navEconomic).toLocaleString('en-US') + 'k',
+        annuityFactor: this.d(c.af, 6),
+        atmOption: this.pct(s.atmOption, 2),
+        ecoOption: this.pct(s.ecoOption, 2),
+        govDiscount: this.pct(-s.govDiscount, 2),
+        atmLive: this.pct(c.atmLive, 2),
+        justified: this.mult(c.justified),
+        impliedJust: this.usd(c.impliedJust, 2),
+        regimeObserved: this.mult(this.div(s.sbetPrice, c.navPerShareScenario)),
+        upsideJust: c.impliedJust ? this.pct(this.div(c.impliedJust - s.sbetPrice, s.sbetPrice), 0) : '—',
+        proceedsM: this.mm(c.proceeds),
+        bsPerShare: this.usd(this.div(c.bsDeduct * 1000, c.sharesEconomic)),
+        ethSold: this.int(ethSold) + ' ETH'
+      },
+      reg: {
+        line: chk(base.lineInSand, T.lineInSand),
+        mnav: chk(base.mnavEconomic, T.mnavEconomic),
+        navPS: chk(base.navPerShareEconomic, T.navPerShareEconomic),
+        conc: chk(base.ethConcBasic, T.ethConcBasic),
+        justScen: chk(base.justifiedScenario, T.justifiedScenario),
+        priceScen: chk(base.justifiedOnScenario, T.justifiedOnScenario),
+        priceEco: chk(base.impliedJust, T.priceJustifiedEconomic),
+        yieldPV: chk(base.yieldPV, T.yieldPV),
+        basis: atDefaults
+          ? 'against snapshot inputs · matches what is on screen'
+          : 'against snapshot inputs · screen is showing edited inputs'
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

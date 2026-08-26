@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/tokens/colors.css">
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/tokens/typography.css">
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/tokens/forms.css">
+<link rel="stylesheet" href="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/styles.css">
+<script src="_ds/otherwhere-capital-design-system-101f004b-541d-4a7a-93d2-0fd1c98f3304/_ds_bundle.js"></script>
+<style>
+body { margin: 0; background: var(--bg-white); }
+a { color: var(--navy); }
+a:hover { color: var(--gold); }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: var(--bg-white); font-family: var(--font-sans); color: var(--navy-mid);">
+  <div style="height: 3px; background: var(--gold);"></div>
+  <div style="padding: 18px 40px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;">
+    <span style="font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: 0.14em; color: var(--navy);">SBET</span>
+    <span style="width: 1px; height: 14px; background: var(--border-mid);"></span>
+    <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-light);">Responsive review · both breakpoints, no resizing</span>
+    <a href="SBET Absolute Valuation.dc.html" style="margin-left: auto; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid; text-decoration: none;">Open the app</a>
+  </div>
+
+  <div style="padding: 32px 40px 56px; display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+
+    <div style="display: flex; flex-direction: column; gap: 14px; flex: none;">
+      <div style="display: flex; flex-direction: column; gap: 3px;">
+        <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label);">Phone · 402px</div>
+        <div style="font-size: 11px; line-height: 1.5; color: var(--navy-light);">Below the 620px switch. Read-only summary.</div>
+      </div>
+      <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+        <iframe src="SBET Absolute Valuation.dc.html" title="Phone layout" style="width: 402px; height: 820px; margin-top: 54px; border: none; display: block; background: var(--bg-white);"></iframe>
+      </x-import>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px; flex: 1 1 640px; min-width: 520px;">
+      <div style="display: flex; flex-direction: column; gap: 3px;">
+        <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cat-label);">Desktop · 1440px, shown at 62%</div>
+        <div style="font-size: 11px; line-height: 1.5; color: var(--navy-light);">Full interactive model. Scaled to fit beside the phone; sliders and inputs still work.</div>
+      </div>
+      <div style="border: 1px solid var(--border); width: 893px; height: 601px; overflow: hidden; flex: none; max-width: 100%;">
+        <iframe src="SBET Absolute Valuation.dc.html" title="Desktop layout" style="width: 1440px; height: 970px; border: none; display: block; transform: scale(0.62); transform-origin: top left;"></iframe>
+      </div>
+      <p style="margin: 0; max-width: 620px; font-size: 11px; line-height: 1.55; color: var(--navy-light); text-wrap: pretty;">Both panes load the same file. Each iframe is its own viewport, so the app's 620px query resolves independently in each — what you see here is the real layout at each width, not a mock of it.</p>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

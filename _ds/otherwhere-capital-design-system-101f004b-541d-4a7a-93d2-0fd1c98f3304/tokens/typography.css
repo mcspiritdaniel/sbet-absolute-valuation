@@ -1,0 +1,44 @@
+/* Otherwhere Capital — Typography Tokens */
+
+:root {
+  /* ---- Font families ---- */
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:  'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:  'IBM Plex Mono', 'SF Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ---- Type scale ---- */
+  --text-2xs:  8px;
+  --text-xs:   9px;
+  --text-sm:   10px;
+  --text-base: 11px;
+  --text-md:   12px;
+  --text-lg:   13px;
+  --text-xl:   13.5px;
+  --text-2xl:  26px;
+  --text-3xl:  34px;
+  --text-hero: clamp(2.4rem, 5vw, 5.4rem);
+
+  /* ---- Font weights ---- */
+  --weight-light:    300;
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ---- Line heights ---- */
+  --leading-tight:  1.2;
+  --leading-snug:   1.5;
+  --leading-normal: 1.55;
+  --leading-relaxed:1.65;
+
+  /* ---- Letter spacing ---- */
+  --tracking-hero:       -0.025em;  /* Serif hero numerals */
+  --tracking-mono-xl:     0.22em;   /* Section labels */
+  --tracking-mono-lg:     0.18em;   /* Group labels */
+  --tracking-mono-md:     0.14em;   /* Ticker marks */
+  --tracking-mono-sm:     0.12em;   /* Footer labels */
+  --tracking-mono-xs:     0.10em;   /* Column headers */
+  --tracking-mono-2xs:    0.08em;   /* Compact headers */
+  --tracking-sans-sm:     0.07em;   /* Subtitle caps */
+  --tracking-sans-xs:     0.03em;   /* Nav links */
+}

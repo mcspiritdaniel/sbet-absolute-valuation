@@ -1,0 +1,59 @@
+/* Otherwhere Capital — Form / Input Reset
+ * Global styles for interactive form elements that can't be
+ * expressed as inline React styles (pseudo-element selectors).
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  line-height: var(--leading-snug);
+  color: var(--navy-mid);
+  background: var(--bg-white);
+}
+
+/* ---- Range slider reset ---- */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  border-radius: 1px;
+  cursor: pointer;
+  margin: 4px 0 0;
+  outline: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: none;
+  cursor: pointer;
+}
+
+/* ---- Global link default ---- */
+a {
+  color: var(--navy-mid);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--navy);
+}

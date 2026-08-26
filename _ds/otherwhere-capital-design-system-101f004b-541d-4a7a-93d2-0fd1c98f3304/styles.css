@@ -1,0 +1,9 @@
+/* Otherwhere Capital Design System — Global Entry Point
+ * Import this single file to consume all tokens, fonts, and resets.
+ * Do NOT add inline rules here — this file is @import lines only.
+ */
+@import './tokens/fonts.css';
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+@import './tokens/forms.css';

@@ -1,0 +1,43 @@
+/* Otherwhere Capital — Color Tokens */
+
+:root {
+  /* ---- Navy scale ---- */
+  --navy:       oklch(0.22 0.12 258);   /* Deep navy — primary text, headings */
+  --navy-mid:   oklch(0.38 0.08 258);   /* Mid navy — body text, secondary content */
+  --navy-light: oklch(0.55 0.045 258);  /* Light navy — labels, captions, muted text */
+  --cat-label:  oklch(0.72 0.018 258);  /* Category label — faintest readable navy */
+
+  /* ---- Gold accent ---- */
+  --gold:    oklch(0.76 0.13 82);       /* Gold — interactive accent, topbar stripe */
+  --bg-gold: oklch(0.96 0.018 82);      /* Gold wash — subtle accent background */
+
+  /* ---- Surfaces ---- */
+  --bg-white:  #ffffff;
+  --bg-subtle: oklch(0.975 0.006 258);  /* Near-white with blue cast — highlighted rows */
+
+  /* ---- Borders ---- */
+  --border:     oklch(0.9 0.015 258);   /* Default border — dividers, table lines */
+  --border-mid: oklch(0.8 0.025 258);   /* Stronger border — interactive outlines */
+
+  /* ---- Semantic — status ---- */
+  --pos:        oklch(0.38 0.14 162);   /* Positive — green */
+  --neg:        oklch(0.44 0.148 24);   /* Negative — red */
+  --neg-bg:     oklch(0.98 0.008 24);   /* Negative background — warning wash */
+  --neg-border: oklch(0.9 0.04 24);     /* Negative border — warning outline */
+
+  /* ---- Semantic aliases ---- */
+  --color-text-primary:    var(--navy);
+  --color-text-secondary:  var(--navy-mid);
+  --color-text-tertiary:   var(--navy-light);
+  --color-text-label:      var(--cat-label);
+  --color-accent:          var(--gold);
+  --color-surface:         var(--bg-white);
+  --color-surface-subtle:  var(--bg-subtle);
+  --color-surface-accent:  var(--bg-gold);
+  --color-border:          var(--border);
+  --color-border-strong:   var(--border-mid);
+  --color-positive:        var(--pos);
+  --color-negative:        var(--neg);
+  --color-negative-bg:     var(--neg-bg);
+  --color-negative-border: var(--neg-border);
+}

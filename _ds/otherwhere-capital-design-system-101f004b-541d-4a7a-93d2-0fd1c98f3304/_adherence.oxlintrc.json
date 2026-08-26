@@ -1,0 +1,275 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/controls/**",
+              "components/data/**",
+              "components/navigation/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Playfair Display|IBM Plex Sans|IBM Plex Mono))/i]",
+        "message": "Font not provided by the design system. Available: Playfair Display, IBM Plex Sans, IBM Plex Mono."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BridgeRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|variant|key|ref|className|style|children)$/]",
+        "message": "<BridgeRow> doesn't accept that prop. Declared props: label, value, variant."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BridgeRow'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:default|total|highlight|muted|negative)$/]",
+        "message": "<BridgeRow> variant must be one of 'default' | 'total' | 'highlight' | 'muted' | 'negative'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='GridCell'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|min|max|step|unit|onChange|isStatic|caption|key|ref|className|style|children)$/]",
+        "message": "<GridCell> doesn't accept that prop. Declared props: value, min, max, step, unit, onChange, isStatic, caption."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='GridCell'] > JSXAttribute[name.name='unit'] > Literal[value!=/^(?:%|%-raw|x|)$/]",
+        "message": "<GridCell> unit must be one of '%' | '%-raw' | 'x' | ''."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='NavBar'] > JSXAttribute > JSXIdentifier[name!=/^(?:ticker|company|section|actions|key|ref|className|style|children)$/]",
+        "message": "<NavBar> doesn't accept that prop. Declared props: ticker, company, section, actions."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SliderControl'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|min|max|step|unit|onChange|formatValue|key|ref|className|style|children)$/]",
+        "message": "<SliderControl> doesn't accept that prop. Declared props: label, value, min, max, step, unit, onChange, formatValue."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SliderControl'] > JSXAttribute[name.name='unit'] > Literal[value!=/^(?:%|%-raw|\\$|\\$M|x|yr|)$/]",
+        "message": "<SliderControl> unit must be one of '%' | '%-raw' | '$' | '$M' | 'x' | 'yr' | ''."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "BridgeRow": {
+        "replaces": []
+      },
+      "GridCell": {
+        "replaces": []
+      },
+      "NavBar": {
+        "replaces": []
+      },
+      "SliderControl": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--bg-gold",
+      "--bg-subtle",
+      "--bg-white",
+      "--border",
+      "--border-mid",
+      "--cat-label",
+      "--color-accent",
+      "--color-border",
+      "--color-border-strong",
+      "--color-negative",
+      "--color-negative-bg",
+      "--color-negative-border",
+      "--color-positive",
+      "--color-surface",
+      "--color-surface-accent",
+      "--color-surface-subtle",
+      "--color-text-label",
+      "--color-text-primary",
+      "--color-text-secondary",
+      "--color-text-tertiary",
+      "--font-mono",
+      "--font-sans",
+      "--font-serif",
+      "--gold",
+      "--layout-col-gap",
+      "--layout-gutter",
+      "--layout-gutter-sm",
+      "--layout-max-width",
+      "--layout-nav-height",
+      "--layout-topbar-height",
+      "--leading-normal",
+      "--leading-relaxed",
+      "--leading-snug",
+      "--leading-tight",
+      "--navy",
+      "--navy-light",
+      "--navy-mid",
+      "--neg",
+      "--neg-bg",
+      "--neg-border",
+      "--pos",
+      "--radius-md",
+      "--radius-none",
+      "--radius-sm",
+      "--space-1",
+      "--space-10",
+      "--space-12",
+      "--space-14",
+      "--space-16",
+      "--space-2",
+      "--space-20",
+      "--space-24",
+      "--space-28",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-7",
+      "--space-8",
+      "--space-9",
+      "--text-2xl",
+      "--text-2xs",
+      "--text-3xl",
+      "--text-base",
+      "--text-hero",
+      "--text-lg",
+      "--text-md",
+      "--text-sm",
+      "--text-xl",
+      "--text-xs",
+      "--tracking-hero",
+      "--tracking-mono-2xs",
+      "--tracking-mono-lg",
+      "--tracking-mono-md",
+      "--tracking-mono-sm",
+      "--tracking-mono-xl",
+      "--tracking-mono-xs",
+      "--tracking-sans-sm",
+      "--tracking-sans-xs",
+      "--weight-bold",
+      "--weight-light",
+      "--weight-medium",
+      "--weight-normal",
+      "--weight-semibold"
+    ],
+    "tokenKinds": {
+      "--navy": "color",
+      "--navy-mid": "color",
+      "--navy-light": "color",
+      "--cat-label": "color",
+      "--gold": "color",
+      "--bg-gold": "color",
+      "--bg-white": "color",
+      "--bg-subtle": "color",
+      "--border": "color",
+      "--border-mid": "color",
+      "--pos": "color",
+      "--neg": "color",
+      "--neg-bg": "color",
+      "--neg-border": "color",
+      "--color-text-primary": "font",
+      "--color-text-secondary": "font",
+      "--color-text-tertiary": "font",
+      "--color-text-label": "font",
+      "--color-accent": "color",
+      "--color-surface": "color",
+      "--color-surface-subtle": "color",
+      "--color-surface-accent": "color",
+      "--color-border": "color",
+      "--color-border-strong": "color",
+      "--color-positive": "color",
+      "--color-negative": "color",
+      "--color-negative-bg": "color",
+      "--color-negative-border": "color",
+      "--font-serif": "font",
+      "--font-sans": "font",
+      "--font-mono": "font",
+      "--text-2xs": "font",
+      "--text-xs": "font",
+      "--text-sm": "font",
+      "--text-base": "font",
+      "--text-md": "font",
+      "--text-lg": "font",
+      "--text-xl": "font",
+      "--text-2xl": "font",
+      "--text-3xl": "font",
+      "--text-hero": "font",
+      "--weight-light": "font",
+      "--weight-normal": "font",
+      "--weight-medium": "font",
+      "--weight-semibold": "font",
+      "--weight-bold": "font",
+      "--leading-tight": "font",
+      "--leading-snug": "font",
+      "--leading-normal": "font",
+      "--leading-relaxed": "font",
+      "--tracking-hero": "font",
+      "--tracking-mono-xl": "font",
+      "--tracking-mono-lg": "font",
+      "--tracking-mono-md": "font",
+      "--tracking-mono-sm": "font",
+      "--tracking-mono-xs": "font",
+      "--tracking-mono-2xs": "font",
+      "--tracking-sans-sm": "font",
+      "--tracking-sans-xs": "font",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-7": "spacing",
+      "--space-8": "spacing",
+      "--space-9": "spacing",
+      "--space-10": "spacing",
+      "--space-12": "spacing",
+      "--space-14": "spacing",
+      "--space-16": "spacing",
+      "--space-20": "spacing",
+      "--space-24": "spacing",
+      "--space-28": "spacing",
+      "--layout-max-width": "spacing",
+      "--layout-gutter": "spacing",
+      "--layout-gutter-sm": "spacing",
+      "--layout-topbar-height": "spacing",
+      "--layout-nav-height": "spacing",
+      "--layout-col-gap": "spacing",
+      "--radius-none": "radius",
+      "--radius-sm": "radius",
+      "--radius-md": "radius"
+    },
+    "fontFamilies": [
+      "IBM Plex Mono",
+      "IBM Plex Sans",
+      "Playfair Display"
+    ]
+  }
+}
