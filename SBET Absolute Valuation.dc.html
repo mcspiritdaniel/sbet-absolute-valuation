@@ -304,7 +304,7 @@ a:hover { color: var(--navy); }
               <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.SliderControl" label="ETH price scenario" value="{{ inp.ethPrice }}" min="{{ inp.ethMin }}" max="{{ inp.ethMax }}" step="10" unit="$" onChange="{{ onEthPrice2 }}" hint-size="100%,34px"></x-import>
               <x-import component-from-global-scope="OtherwhereCapitalDesignSystem_101f00.SliderControl" label="SG&amp;A, annual · $m" value="{{ inp.sgaAnnualM }}" min="10" max="80" step="1" unit="$M" onChange="{{ onSga }}" hint-size="100%,34px"></x-import>
             </div>
-            <p style="margin: 6px 0 0; font-size: 11px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">Sliders carry judgement. Discount rate and horizon move assets plus yield and nothing else. Volatility and the risk-free rate move economic mNAV only, through the Black-Scholes deduction.</p>
+            <p style="margin: 6px 0 0; font-size: 11px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">Sliders carry judgement. Discount rate and horizon move assets plus yield and nothing else. {{ l.bsNote }}</p>
           </div>
         </section>
 
@@ -1516,6 +1516,10 @@ class Component extends DCLogic {
         basicEqSum: this.int(Component.SNAP.sharesCommon) + ' + ' + this.int(Component.SNAP.prefundedWarrants) + ' = ' + this.int(Component.SNAP.sharesCommon + Component.SNAP.prefundedWarrants),
         dashNavPS: this.usd(Component.SRC.dashNavPS, 2),
         ethHoldings: 'ETH holdings · ' + this.int(c.ethTotal) + ' ETH at $' + Number(s.ethPrice).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+        bsNote: 'Volatility and the risk-free rate act only through the Black-Scholes warrant deduction, which flows into economic NAV per share, economic mNAV and the line in the sand.'
+          + (c.itmCount >= c.warrantsTotal
+            ? ' At ' + this.usd(s.sbetPrice, 2) + ' every warrant tranche is in the money, so there is no deduction for them to move.'
+            : ''),
         warrantSplit: this.int(c.warrantsTotal - c.itmCount) + ' of ' + this.int(c.warrantsTotal) + ' warrant shares are out of the money at ' + this.usd(s.sbetPrice, 2) + '.',
         tsmRow: 'Net warrant shares · treasury stock method' + (c.itmCount > 0 ? ' · ' + this.int(c.itmCount) + ' in the money' : ' · none in the money'),
         yieldRow: 'Cash flows the base throws off · ' + s.horizonYears + ' years at ' + this.pct(s.discountRate, 1),
