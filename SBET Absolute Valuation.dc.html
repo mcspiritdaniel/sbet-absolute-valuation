@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SBET Absolute Valuation</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SBET Absolute Valuation">
+<meta property="og:description" content="Absolute-valuation model for SharpLink Gaming (NASDAQ: SBET), an ETH treasury company — economic NAV, yield strip, and justified price from public SEC filings. Not investment advice. Not affiliated with SharpLink Gaming.">
+<!-- og:image is relative; make it absolute once the production domain is set -->
+<meta property="og:image" content="screenshots/01-app.png">
+<meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -843,6 +851,8 @@ class Component extends DCLogic {
     { n: 2764013, k: 7.68, t: 3.75 }, { n: 10013351, k: 8.15, t: 3.85 },
     { n: 252, k: 7.77, t: 3.96 }
   ];
+  // Abramowitz & Stegun 26.2.17 rational approximation to the standard normal CDF.
+  static NORMCDF_COEF = { p: 0.2316419, b: [0.319381530, -0.356563782, 1.781477937, -1.821255978, 1.330274429] };
   static AFFECTS = {
     discountRate: ['Discount rate', 'assets plus yield', 'NAV, ETH per share, or any of the three mNAVs'],
     horizonYears: ['Horizon', 'assets plus yield', 'NAV, ETH per share, or any of the three mNAVs'],
@@ -897,8 +907,10 @@ class Component extends DCLogic {
   }
 
   async fetchEth() {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
     try {
-      const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
+      const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd', { signal: controller.signal });
       if (!res.ok) throw new Error('status ' + res.status);
       const j = await res.json();
       const p = j && j.ethereum ? Number(j.ethereum.usd) : NaN;
@@ -906,14 +918,16 @@ class Component extends DCLogic {
       this.setState({ pendingEth: p, pendingAt: new Date() });
     } catch (e) {
       this.setState({ ethFetchFailed: true });
+    } finally {
+      clearTimeout(timeout);
     }
   }
 
   normCdf(x) {
     if (!Number.isFinite(x)) return x > 0 ? 1 : 0;
-    const b = [0.319381530, -0.356563782, 1.781477937, -1.821255978, 1.330274429];
+    const { p, b } = Component.NORMCDF_COEF;
     const ax = Math.abs(x);
-    const t = 1 / (1 + 0.2316419 * ax);
+    const t = 1 / (1 + p * ax);
     const poly = t * (b[0] + t * (b[1] + t * (b[2] + t * (b[3] + t * b[4]))));
     const nd = Math.exp(-0.5 * ax * ax) / Math.sqrt(2 * Math.PI);
     const c = 1 - nd * poly;

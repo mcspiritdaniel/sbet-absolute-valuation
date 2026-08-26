@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SBET Absolute Valuation — Print Edition</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SBET Absolute Valuation — Print Edition">
+<meta property="og:description" content="Print/PDF edition of the SBET absolute-valuation model, pinned to a fixed snapshot. Not investment advice. Not affiliated with SharpLink Gaming.">
+<!-- og:image is relative; make it absolute once the production domain is set -->
+<meta property="og:image" content="screenshots/05-print.png">
+<meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 <meta name="omelette-print-source" content="v1787615928385796 SBET Absolute Valuation.dc.html">
 </head>
@@ -606,6 +614,8 @@ class Component extends DCLogic {
     { n: 2764013, k: 7.68, t: 3.75 }, { n: 10013351, k: 8.15, t: 3.85 },
     { n: 252, k: 7.77, t: 3.96 }
   ];
+  // Abramowitz & Stegun 26.2.17 rational approximation to the standard normal CDF.
+  static NORMCDF_COEF = { p: 0.2316419, b: [0.319381530, -0.356563782, 1.781477937, -1.821255978, 1.330274429] };
   static AFFECTS = {
     discountRate: ['Discount rate', 'the line in the sand', 'NAV, ETH per share, or any of the three mNAVs'],
     horizonYears: ['Horizon', 'the line in the sand', 'NAV, ETH per share, or any of the three mNAVs'],
@@ -659,9 +669,9 @@ class Component extends DCLogic {
 
   normCdf(x) {
     if (!Number.isFinite(x)) return x > 0 ? 1 : 0;
-    const b = [0.319381530, -0.356563782, 1.781477937, -1.821255978, 1.330274429];
+    const { p, b } = Component.NORMCDF_COEF;
     const ax = Math.abs(x);
-    const t = 1 / (1 + 0.2316419 * ax);
+    const t = 1 / (1 + p * ax);
     const poly = t * (b[0] + t * (b[1] + t * (b[2] + t * (b[3] + t * b[4]))));
     const nd = Math.exp(-0.5 * ax * ax) / Math.sqrt(2 * Math.PI);
     const c = 1 - nd * poly;

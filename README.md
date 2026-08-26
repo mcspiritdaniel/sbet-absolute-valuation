@@ -151,6 +151,35 @@ two people to independently confuse it with `priceJustifiedScenario`, which is
 the same idea on a different share basis. **Pin anything a headline displays,
 not just anything that feeds a calculation.**
 
+### `optionStrike` is inferred, not sourced — follow-up for the workbook
+
+`SNAP.optionStrike` (the employee option strike, currently $122.88) has no
+field of its own in the model snapshot. The build step (`build.py`) derives
+it algebraically from `fundamentals.fullExerciseProceeds` minus the warrant
+and prefunded-warrant exercise proceeds, divided by the option count — the
+same accounting `compute()` uses for `proceeds` in both `.dc.html` files.
+
+This is inference standing in for a sourced input, which is exactly the
+failure class `priceJustifiedEconomic` above is a rule about: a value can be
+derived correctly from checked data and still be silently wrong if the
+thing it's derived from ever changes shape (a new warrant tranche with
+different accounting, a change to how the workbook reports proceeds). The
+algebra would keep producing a number; nothing would catch it being the
+wrong one.
+
+Mitigated for now, not fixed: `build.py` recomputes `fullExerciseProceeds`
+forward from the derived `optionStrike` and the warrant tranche table
+through an independently-written formula, and fails the build if it doesn't
+reproduce the snapshot's value to full precision. That catches a coding
+regression in the derivation, but not a genuine change in the workbook's
+underlying accounting — the round trip would still (correctly) fail loudly
+in that case, but the fix is a judgement call, not automatic.
+
+**Ask: have the workbook publish `optionStrike` directly in `checks{}`
+(or `fundamentals`) next week.** Once it's a sourced field, this derivation
+becomes a cross-check against it instead of the source, and can be
+downgraded from "assert or fail" to "warn on mismatch."
+
 ## Audit — `audit_app.py`
 
 Keep this **separate** from the workbook's regression harness. Those 18 checks
