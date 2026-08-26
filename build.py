@@ -183,6 +183,25 @@ def derive_option_strike(fundamentals, warrant_tranches):
     return remainder / options
 
 
+def derive_optionality_note(assumptions):
+    """PRINT_FILE.OPTIONALITY_NOTE — the print copy's frozen equivalent of
+    the main file's live `v.optionalityClause`.
+
+    Print has no ATM/ecosystem/governance sliders (by design — see README
+    "Things that must not be 'restored'"), so this is not a live computation
+    there: it is one fixed sentence fragment, wrong exactly once a week if
+    it is hand-typed and the assumptions move. Computed here from the same
+    three assumptions and the same formula and wording rule as the main
+    file's `netOptionality`/`optionalityClause` (see the `Component` class
+    in both `.dc.html` files), so the two can never independently drift.
+    """
+    net = float(assumptions['atmOption']) + float(assumptions['ecoOption']) - float(assumptions['govDiscount'])
+    pct = f"{net * 100:.2f}%"
+    if abs(net) < 0.00005:
+        return f"{pct}, an actual wash"
+    return f"{pct}, a small {'drag' if net < 0 else 'addition'} rather than a wash"
+
+
 def recompute_full_exercise_proceeds(fundamentals, warrant_tranches, option_strike):
     """Independent forward recomputation of fullExerciseProceeds from a
     given optionStrike, the warrant tranche table, and prefundedWarrants —
@@ -292,6 +311,9 @@ ASOF_BLOCK_RE = re.compile(
 TARGETS_BLOCK_RE = re.compile(r"  static TARGETS = \{.*?\n  \};", re.DOTALL)
 SRC_BLOCK_RE = re.compile(r"  static SRC = \{.*?\n  \};", re.DOTALL)
 SNAP_BLOCK_RE = re.compile(r"  static SNAP = \{.*?\n  \};", re.DOTALL)
+# Print-only: see derive_optionality_note. Not present in the main file,
+# which computes the equivalent live from SNAP via v.optionalityClause.
+OPTIONALITY_NOTE_BLOCK_RE = re.compile(r"  static OPTIONALITY_NOTE = '[^']*';")
 
 
 def splice(text, pattern, replacement, block_name, file_name):
@@ -301,12 +323,15 @@ def splice(text, pattern, replacement, block_name, file_name):
     return text[:matches[0].start()] + replacement + text[matches[0].end():]
 
 
-def apply_blocks(path, asof_block, targets_block, src_block, snap_block):
+def apply_blocks(path, asof_block, targets_block, src_block, snap_block, optionality_note_block=None):
     text = path.read_text()
     text = splice(text, ASOF_BLOCK_RE, asof_block, "ASOF", path.name)
     text = splice(text, TARGETS_BLOCK_RE, targets_block, "TARGETS", path.name)
     text = splice(text, SRC_BLOCK_RE, src_block, "SRC", path.name)
     text = splice(text, SNAP_BLOCK_RE, snap_block, "SNAP", path.name)
+    if optionality_note_block is not None:
+        text = splice(text, OPTIONALITY_NOTE_BLOCK_RE, optionality_note_block,
+                       "OPTIONALITY_NOTE", path.name)
     path.write_text(text)
 
 
@@ -334,11 +359,17 @@ def main(argv):
     src_block_main = build_src_block(fundamentals, manual, close_date, include_dash_nav_ps=True)
     src_block_print = build_src_block(fundamentals, manual, close_date, include_dash_nav_ps=False)
 
+    optionality_note = derive_optionality_note(assumptions)
+    optionality_note_block = f"  static OPTIONALITY_NOTE = '{optionality_note}';"
+
     apply_blocks(MAIN_FILE, asof_block, targets_block, src_block_main, snap_block)
-    apply_blocks(PRINT_FILE, asof_block, targets_block, src_block_print, snap_block)
+    apply_blocks(PRINT_FILE, asof_block, targets_block, src_block_print, snap_block,
+                 optionality_note_block=optionality_note_block)
 
     print(f"Wrote ASOF/SNAP/SRC/TARGETS for asOf={model['asOf']} into:")
     print(f"  {MAIN_FILE.name}")
+    print(f"  {PRINT_FILE.name}")
+    print(f"Wrote OPTIONALITY_NOTE ('{optionality_note}') into:")
     print(f"  {PRINT_FILE.name}")
 
 
