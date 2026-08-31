@@ -817,22 +817,22 @@ a:hover { color: var(--navy); }
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;startView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;overview&quot;,&quot;value&quot;,&quot;valuation&quot;,&quot;capital&quot;],&quot;default&quot;:&quot;overview&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;notesReactive&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;showRegressionStrip&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behaviour&quot;}}">
 class Component extends DCLogic {
-  static ASOF = '2026-08-25';
-  static ASOF_SHORT = '25 Aug';
-  static ASOF_LONG = '25 Aug 2026';
+  static ASOF = '2026-08-28';
+  static ASOF_SHORT = '28 Aug';
+  static ASOF_LONG = '28 Aug 2026';
   static TARGETS = {
-    lineInSand: '11.2139253',
-    mnavEconomic: '0.8325398',
-    navPerShareEconomic: '10.0295503',
+    lineInSand: '11.2298819',
+    mnavEconomic: '0.8164302',
+    navPerShareEconomic: '10.0437247',
     ethConcBasic: '4.0943806',
-    justifiedScenario: '1.1017062',
-    justifiedOnScenario: '10.9327781',
-    priceJustifiedEconomic: '11.1136298',
-    yieldPV: '262549.7344146'
+    justifiedScenario: '1.1017174',
+    justifiedOnScenario: '10.9345431',
+    priceJustifiedEconomic: '11.1294447',
+    yieldPV: '262615.7406816'
   };
   static SRC = {
     holdingsEth: 888938, holdingsRelease: '3 August 2026',
-    dashConc: 4.10, dashEth: 890376, dashNavPS: 10.40, dashAsOf: '23 August', closeDate: '25 August 2026'
+    dashConc: 4.10, dashEth: 890376, dashNavPS: 10.40, dashAsOf: '23 August', closeDate: '28 August 2026'
   };
   static SNAP = {
     ethNative: 634255, ethLsETH: 181748, ethWeETH: 72935,
@@ -842,7 +842,7 @@ class Component extends DCLogic {
     incentivesY1: 10344, incentiveDecay: 0.5, galaxyCommit: 100000, galaxyReturn: 0.08,
     sgaAnnual: 36240, affiliate: 436, discountRate: 0.12, horizonYears: 10,
     atmOption: 0.02, ecoOption: 0.02, govDiscount: 0.05, riskFree: 0.04, vol: 1.0,
-    ethPrice: 2442.01, sbetPrice: 8.35, optionStrike: 122.88
+    ethPrice: 2442.41, sbetPrice: 8.2, optionStrike: 122.88
   };
   static WARRANTS = [
     { n: 1382007, k: 6.15, t: 3.75 }, { n: 691004, k: 6.77, t: 3.75 },

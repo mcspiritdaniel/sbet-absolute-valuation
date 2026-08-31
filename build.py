@@ -27,7 +27,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT_MODEL = ROOT / "SBET_App_Snapshot_25Aug2026-a55ad6ef.json"
+DEFAULT_MODEL = ROOT / "SBET_App_Snapshot_28Aug2026.json"
 DEFAULT_MANUAL = ROOT / "src_manual.json"
 MAIN_FILE = ROOT / "SBET Absolute Valuation.dc.html"
 PRINT_FILE = ROOT / "SBET Absolute Valuation-print.dc.html"
