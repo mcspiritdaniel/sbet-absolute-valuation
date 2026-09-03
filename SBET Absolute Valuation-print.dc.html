@@ -625,10 +625,10 @@ class Component extends DCLogic {
     sgaAnnual: ['SG&A', 'the net yield strip and the line', 'ETH per 1,000 shares — by exactly 0.00%, which is the whole objection to the north star'],
     vol: ['Volatility', 'economic mNAV and economic NAV, through the Black-Scholes deduction', 'reported NAV, ETH per share, basic or company fully diluted mNAV'],
     riskFree: ['Risk-free rate', 'economic mNAV, through the Black-Scholes deduction', 'reported NAV, ETH per share, basic or company fully diluted mNAV'],
-    ethPrice: ['ETH price', 'everything — NAV, all three mNAVs, ETH value per share, the yield strip and the line', 'nothing; no output here is insulated from the ETH price'],
+    ethPrice: ['ETH price', 'everything — NAV, all three mNAVs, ETH value per share, the yield strip and the line', null],
     sbetPrice: ['SBET price', 'all three mNAVs and the economic share count', 'NAV per share or ETH per share — neither depends on the share price'],
-    ethNative: ['ETH holdings', 'everything on the asset side, the yield strip and the line', 'nothing'],
-    ethLiquid: ['ETH holdings', 'everything on the asset side, the yield strip and the line', 'nothing'],
+    ethNative: ['ETH holdings', 'everything on the asset side, the yield strip and the line', null],
+    ethLiquid: ['ETH holdings', 'everything on the asset side, the yield strip and the line', null],
     cash: ['Cash', 'NAV and all three mNAVs', 'ETH per 1,000 shares — cash appears nowhere in that formula'],
     liabilities: ['Liabilities', 'NAV and all three mNAVs', 'ETH per 1,000 shares'],
     sharesCommon: ['Share count', 'everything per share', 'total NAV in dollars'],
@@ -1143,7 +1143,10 @@ class Component extends DCLogic {
         show: notesReactive && !!a,
         label: a ? a[0] : '',
         does: a ? a[1] : '',
-        doesNot: a ? a[2] : ''
+        // Unreferenced in this file's template (print has no sliders, so
+        // s.lastTouched never sets) - kept in sync with the main file's
+        // logic anyway. See the main file for why this branches.
+        doesNot: a ? (a[2] ? 'Does not touch ' + a[2] + '.' : 'Touches everything; no output here is insulated from it.') : ''
       },
       navActions: [{ label: 'Methodology', onClick: () => this.setState({ drawer: true }) }],
       openDrawer: () => this.setState({ drawer: true }),

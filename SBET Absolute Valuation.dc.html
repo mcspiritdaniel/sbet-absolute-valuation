@@ -78,7 +78,7 @@ a:hover { color: var(--navy); }
         <div style="border-left: 2px solid var(--gold); padding: 2px 0 2px 12px; display: flex; flex-direction: column; gap: 5px;">
           <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-light);">You just moved · {{ affects.label }}</div>
           <div style="font-size: 12px; line-height: 1.5; color: var(--navy); text-wrap: pretty;">Affects {{ affects.does }}.</div>
-          <div style="font-size: 12px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">Does not touch {{ affects.doesNot }}.</div>
+          <div style="font-size: 12px; line-height: 1.5; color: var(--navy-light); text-wrap: pretty;">{{ affects.doesNot }}</div>
         </div>
       </sc-if>
 
@@ -860,10 +860,10 @@ class Component extends DCLogic {
     sgaAnnual: ['SG&A', 'the net yield strip and assets plus yield', 'ETH per 1,000 shares, which moves by 0.00%'],
     vol: ['Volatility', 'economic mNAV and economic NAV, through the Black-Scholes deduction', 'reported NAV, ETH per share, basic or company fully diluted mNAV'],
     riskFree: ['Risk-free rate', 'economic mNAV, through the Black-Scholes deduction', 'reported NAV, ETH per share, basic or company fully diluted mNAV'],
-    ethPrice: ['ETH price', 'everything: NAV, all three mNAVs, ETH value per share, the yield strip and assets plus yield', 'nothing; no output here is insulated from the ETH price'],
+    ethPrice: ['ETH price', 'everything: NAV, all three mNAVs, ETH value per share, the yield strip and assets plus yield', null],
     sbetPrice: ['SBET price', 'all three mNAVs and the economic share count', 'NAV per share or ETH per share; neither depends on the share price'],
-    ethNative: ['ETH holdings', 'everything on the asset side, the yield strip and assets plus yield', 'nothing'],
-    ethLiquid: ['ETH holdings', 'everything on the asset side, the yield strip and assets plus yield', 'nothing'],
+    ethNative: ['ETH holdings', 'everything on the asset side, the yield strip and assets plus yield', null],
+    ethLiquid: ['ETH holdings', 'everything on the asset side, the yield strip and assets plus yield', null],
     cash: ['Cash', 'NAV and all three mNAVs', 'ETH per 1,000 shares; cash appears nowhere in that formula'],
     liabilities: ['Liabilities', 'NAV and all three mNAVs', 'ETH per 1,000 shares'],
     sharesCommon: ['Share count', 'everything per share', 'total NAV in dollars'],
@@ -1469,7 +1469,11 @@ class Component extends DCLogic {
         show: notesReactive && !!a,
         label: a ? a[0] : '',
         does: a ? a[1] : '',
-        doesNot: a ? a[2] : ''
+        // a[2] is null for inputs with no unaffected output (ETH price,
+        // ETH holdings) - "Does not touch nothing" is a double negative,
+        // so that case gets its own sentence rather than interpolating
+        // into the "Does not touch X." template.
+        doesNot: a ? (a[2] ? 'Does not touch ' + a[2] + '.' : 'Touches everything; no output here is insulated from it.') : ''
       },
       navActions: [
         { label: 'Dan McSpirit, CFA', href: 'https://danmcspirit.com', external: true },
