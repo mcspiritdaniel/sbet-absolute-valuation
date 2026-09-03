@@ -1279,6 +1279,15 @@ class Component extends DCLogic {
   group(n) {
     return Number.isFinite(n) ? n.toLocaleString('en-US', { maximumFractionDigits: 6 }) : '';
   }
+  // group() has no minimum fraction digits, correct for the count-shaped
+  // cells (ETH units, $000 aggregates, share counts) but wrong for a price
+  // cell: 8.2 is not how a NASDAQ close is quoted. Same values this.usd()
+  // formats elsewhere, without the "$" prefix - the cell's own label
+  // ("ETH price · USD") already carries the unit, so repeating it in the
+  // value would be redundant with how the other cells in this panel look.
+  groupPrice(n) {
+    return Number.isFinite(n) ? n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '';
+  }
   clean(txt) {
     return String(txt).replace(/[,\s_$]/g, '');
   }
@@ -1286,8 +1295,9 @@ class Component extends DCLogic {
     const drafts = this.state.drafts || {};
     const raw = drafts[key];
     const committed = this.state[key];
+    const isPrice = key === 'ethPrice' || key === 'sbetPrice';
     return {
-      value: raw !== undefined ? raw : this.group(committed),
+      value: raw !== undefined ? raw : (isPrice ? this.groupPrice(committed) : this.group(committed)),
       onFocus: (e) => {
         if (e && e.target) { const t = e.target; setTimeout(() => { try { t.select(); } catch (err) {} }, 0); }
         this.setState(st => {
