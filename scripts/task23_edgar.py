@@ -1,5 +1,5 @@
 """Tasks 2 & 3: SBET EDGAR filing index + 3Q25 10-Q download."""
-import os, time, datetime as dt
+import os, re, time, datetime as dt
 from pathlib import Path
 import pandas as pd
 import requests
@@ -60,7 +60,10 @@ orig = q[q.form == "10-Q"]
 assert len(orig) == 1, "Expected exactly one original 10-Q"
 r = orig.iloc[0]
 url = f"https://www.sec.gov/Archives/edgar/data/{cik}/{r.accessionNumber.replace('-', '')}/{r.primaryDocument}"
-html = get(url).content
+# sec.gov's CDN appends a bot-management <script> tag to HTML responses; strip it and verify vs index.json size.
+html = re.sub(rb'<script type="text/javascript"  src="/[A-Za-z0-9_/+=-]+"></script>', b"", get(url).content)
+listing = {i["name"]: i["size"] for i in get(url.rsplit("/", 1)[0] + "/index.json").json()["directory"]["item"]}
+assert listing.get(r.primaryDocument) and int(listing[r.primaryDocument]) == len(html), "10-Q size mismatch vs index.json"
 open("data/SBET_FORM_10Q_3Q25.html", "wb").write(html)
 txt = html.decode("utf-8", "ignore")
 print(f"Saved {url} -> {len(html):,} bytes; mentions 'September 30, 2025': {'September 30, 2025' in txt}; "
