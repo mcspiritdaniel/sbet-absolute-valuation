@@ -50,6 +50,11 @@ f = pd.read_csv("data/sbet_edgar_filings.csv", dtype=str)
 k = f[f.form.isin(["8-K", "8-K/A"])]
 sel = k[k["items"].fillna("").apply(lambda s: bool(ITEMS & {x.strip() for x in s.split(",")}))]
 print(f"{len(k)} 8-K/8-K/A filings; {len(sel)} with items {sorted(ITEMS)}")
+# Incremental: skip filings already in the manifest and append new ones.
+prior = pd.read_csv(OUT / "manifest.csv", dtype=str) if (OUT / "manifest.csv").exists() else pd.DataFrame()
+if len(prior):
+    sel = sel[~sel.accession_number.isin(prior.accession)]
+    print(f"{prior.accession.nunique()} already in manifest; {len(sel)} new to download")
 
 manifest, no_ex99, problems = [], [], []
 for _, r in sel.iterrows():
@@ -91,9 +96,12 @@ for _, r in sel.iterrows():
                          "file_name": name, "exhibit_type": typ, "size_bytes": len(body),
                          "verified_against": check})
 
-m = pd.DataFrame(manifest)
+new = pd.DataFrame(manifest)
+m = pd.concat([prior, new.astype(str)], ignore_index=True) if len(new) else prior
 m.to_csv(OUT / "manifest.csv", index=False)
-print(f"\nDownloaded {len(m)} files for {m.accession.nunique()} filings "
+m = m.astype({"size_bytes": int})
+if len(new): print("New files:\n" + new.to_string(index=False))
+print(f"\nManifest now lists {len(m)} files for {m.accession.nunique()} filings "
       f"({(m.exhibit_type.str.upper().str.startswith('EX-99')).sum()} EX-99 exhibits, {m.size_bytes.sum():,} bytes)")
 print("Exhibit types:", m.exhibit_type.value_counts().to_dict())
 print(f"\nFilings with no EX-99 exhibit: {len(no_ex99)}")
