@@ -1,0 +1,4 @@
+# Research data and its build scripts; not part of the static site.
+# scripts/requirements.txt otherwise makes Vercel treat the repo as a Python app.
+/scripts
+/data
